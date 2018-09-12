@@ -1,0 +1,9 @@
+DataContent = 
+{
+	RichAnimationBuilder = 
+	{
+		string Name = "leaf",
+		uint64 ResourceId = 57eea8836cbb113a,
+		string PreviewArchetype = "",
+	},
+},

@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "punchyonce",
+		uint64 ResourceId = 57f7c98654750b7e,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 216,
+		uint FrameSizeY = 360,
+		uint FrameCount = 3,
+		float FrameDelay = 0.10833022,
+		float OriginX = 108,
+		float OriginY = 180,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

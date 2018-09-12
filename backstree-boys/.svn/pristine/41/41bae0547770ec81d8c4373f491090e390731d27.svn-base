@@ -1,0 +1,61 @@
+class KCSCamera : ZilchComponent
+{
+    var Finished : Boolean = false;
+    
+    var PlayerNumber : Integer = 0;
+    
+    var LoadLevel : Level = Level.Find("TreeFall");
+    
+    function Initialize(init : CogInitializer)
+    {
+        Console.WriteLine("weird");
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if(this.Finished)
+        {
+            if(this.PlayerNumber == 1)
+            {
+                var location = Real3();
+                location.X += 50;
+                location.Z += 10;
+                this.Owner.Transform.Translation = location;
+            }
+            else if(this.PlayerNumber == 2)
+            {
+                if(this.GameSession.GameSettings.NumberOfCharacters > 2)
+                {
+                    var location = Real3();
+                    location.Y -= 50;
+                    location.Z += 10;
+                    this.Owner.Transform.Translation = location;
+                }
+                else
+                {
+                    this.Space.LoadLevel(this.LoadLevel);
+                }
+            }
+            else if(this.PlayerNumber == 3)
+            {
+                if(this.GameSession.GameSettings.NumberOfCharacters > 3)
+                {
+                    var location = Real3();
+                    location.X += 50;
+                    location.Y -= 50;
+                    location.Z += 10;
+                    this.Owner.Transform.Translation = location;
+                }
+                else
+                {
+                    this.Space.LoadLevel(this.LoadLevel);
+                }
+            }
+            else
+            {
+                this.Space.LoadLevel(this.LoadLevel);
+            }
+        }
+    }
+}

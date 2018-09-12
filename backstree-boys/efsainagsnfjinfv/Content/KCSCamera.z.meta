@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "KCSCamera",
+		uint64 ResourceId = 57d8ec37eb20bef8,
+	},
+},

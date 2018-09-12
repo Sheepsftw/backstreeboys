@@ -1,0 +1,11 @@
+DataContent = 
+{
+	DataBuilder = 
+	{
+		string Name = "ButtonLayer",
+		uint64 ResourceId = 57d1db0fb1f78f67,
+		string LoaderType = "SpriteLayer",
+		uint Version = 0,
+		bool ShowInEditor = true,
+	},
+},

@@ -1,0 +1,30 @@
+class CountdownAudio : ZilchComponent
+{
+    [Property]
+    var SoundCue: SoundCue;
+    
+    var CountdownTimer : Integer = 0;
+    
+    [Dependency]
+    var Sound : SoundEmitter;
+    
+    var SoundInstance : SoundInstance;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if(this.CountdownTimer == 0)
+        {
+            this.SoundInstance = this.Owner.SoundEmitter.PlayCue(this.SoundCue);
+        }
+        if(this.CountdownTimer == 240)
+        {
+            this.Owner.SoundEmitter.Stop();
+        }
+        ++this.CountdownTimer;
+    }
+}

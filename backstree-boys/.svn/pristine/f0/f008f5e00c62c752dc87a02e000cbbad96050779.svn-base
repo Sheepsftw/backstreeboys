@@ -1,0 +1,105 @@
+class PlayerInput : ZilchComponent
+{
+    //which gamepad it's gonna detect
+    [Property]
+    var PlayerIndex : Integer;
+    //declare the controller
+    var Controller : Gamepad;
+    
+    [Property]
+    var MoveSprite : SpriteSource = null;
+    
+    [Property]
+    var StillSprite : SpriteSource = null;
+    
+    [Property]
+    var StunSprite : SpriteSource = null;
+    
+    var Counter : Integer = 0;
+    
+    var Valid : Boolean = true;
+    
+    var StunTimer : Integer = 0;
+    function Initialize(init : CogInitializer)
+    {
+        
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+       
+    }
+    //jump mechanic
+    function OnJumpPressed(event : GamepadEvent)
+    {
+        if(this.Valid)
+        {
+            if(event.Button == Buttons.A)
+            {
+                this.Owner.SweptController.Jump();
+            }
+        }
+    }
+    
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if(this.Counter == 2)
+        {
+            this.Controller = Zero.Gamepads.GetGamePad(this.PlayerIndex);
+            Zero.Connect(this.Controller, Events.ButtonDown, this.OnJumpPressed);
+        }
+        ++this.Counter;
+        if(this.Counter > 2)
+        {
+            if(this.Valid)
+            {
+                var movement = Real3();
+                //which direction
+                var horzmovement = this.Controller.LeftStick.X;
+                movement.X += horzmovement;
+                //flipping the sprite to face the direction
+                if(horzmovement > 0)
+                {
+                    this.Owner.Sprite.FlipX = false;
+                    //changing the Collider to be realistic
+                    var newBoxCollider = Real3();
+                    newBoxCollider.X = -0.3;
+                    newBoxCollider.Y = 0.1;
+                    this.Owner.BoxCollider.Offset = newBoxCollider;
+                    if(this.Owner.Sprite.SpriteSource != this.MoveSprite)
+                    {
+                        this.Owner.Sprite.SpriteSource = this.MoveSprite;
+                    }
+                }
+                else if(horzmovement < 0)
+                {
+                    this.Owner.Sprite.FlipX = true;
+                    //see above
+                    var newBoxCollider = Real3();
+                    newBoxCollider.X = 0.3;
+                    newBoxCollider.Y = 0.1;
+                    this.Owner.BoxCollider.Offset = newBoxCollider;
+                    if(this.Owner.Sprite.SpriteSource != this.MoveSprite)
+                    {
+                        this.Owner.Sprite.SpriteSource = this.MoveSprite;
+                    }
+                }
+                else
+                {
+                    this.Owner.Sprite.SpriteSource = this.StillSprite;
+                }
+                this.Owner.SweptController.Update(movement, event.Dt);
+            }
+            else
+            {
+                this.Owner.Sprite.SpriteSource = this.StunSprite;
+                if(this.StunTimer == 100)
+                {
+                    this.Valid = true;
+                    this.StunTimer = 0;
+                }
+                else
+                {
+                    ++this.StunTimer;
+                }
+            }
+        }
+    }
+}

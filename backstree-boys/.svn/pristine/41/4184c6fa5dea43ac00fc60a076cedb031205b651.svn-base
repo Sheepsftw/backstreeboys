@@ -1,0 +1,29 @@
+Cog = 
+{
+	Project = 
+	{
+		string ProjectName = "A1",
+		string ProjectOwner = "",
+		string DefaultLevel = "Level",
+		string ProjectSpace = "Space",
+		string ProjectFolder = "C:\Users\ritika.roychoudhury\Desktop\backstree_boys\A1",
+		uint ProjectEngineRevision = 13602,
+		bool AutoTakeProjectScreenshot = true,
+		uint64 Guid = 57e6bce4d8a8a18b,
+	},
+	EditorSettings = 
+	{
+		EditorMode EditorMode = Mode2D,
+		bool ViewCube = true,
+		float ViewCubeViewportSize = 150,
+		ScriptReloadMethod ScriptReloadEditor = ReInitializeObjects,
+		ScriptReloadMethod ScriptReloadGame = PatchObjects,
+		bool AutoUpdateContentChanges = true,
+	},
+	ProjectDescription = 
+	{
+		string ShortDescription = "",
+		string LongDescription = "",
+		string Tags = "",
+	},
+},

@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "ChooseControls",
+		uint64 ResourceId = 57d8d4bc6b53c590,
+	},
+},

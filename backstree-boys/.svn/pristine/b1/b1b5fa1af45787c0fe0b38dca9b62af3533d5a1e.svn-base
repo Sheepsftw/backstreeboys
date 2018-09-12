@@ -1,0 +1,21 @@
+class SpawnPlayers : ZilchComponent
+{
+    var PlayerNumber : Integer; 
+    function Initialize(init : CogInitializer)
+    {
+        this.PlayerNumber = this.GameSession.GameSettings.NumberOfCharacters;
+        var index = 0;
+        for(index = 0; index < this.PlayerNumber; ++index)
+        {
+            //Console.WriteLine(index);
+            //var characterNumber = this.GameSession.GameSettings.CharacterArray.Get(index);
+            
+            
+        }
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+}

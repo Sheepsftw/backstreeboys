@@ -1,0 +1,11 @@
+AudioContent = 
+{
+	SoundBuilder = 
+	{
+		string Name = "click",
+		uint64 ResourceId = 57ce9694bcb891e6,
+		bool Compressed = false,
+		uint Quality = 100,
+		SoundLoadType LoadType = Decompress,
+	},
+},

@@ -1,0 +1,19 @@
+class MinimapMovement : ZilchComponent
+{
+    [Property]
+    var ThisPlayer : CogPath = null;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var location = Real3();
+        location.Z += 1;
+        location.X -= 200;
+        location.Y = this.ThisPlayer.Cog.Transform.Translation.Y - 150;
+        this.Owner.Transform.Translation = location;
+        Console.WriteLine(this.Owner.Transform.Translation.Y);
+    }
+}

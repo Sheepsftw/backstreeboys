@@ -1,0 +1,29 @@
+Cog = 
+{
+	Project = 
+	{
+		string ProjectName = "AI",
+		string ProjectOwner = "",
+		string DefaultLevel = "Level",
+		string ProjectSpace = "Space",
+		string ProjectFolder = "C:\Users\tefsh_000\Documents\ZeroProjects\backstree_boys\AI",
+		uint ProjectEngineRevision = 13602,
+		bool AutoTakeProjectScreenshot = true,
+		uint64 Guid = 57e55cc527c0fbd0,
+	},
+	EditorSettings = 
+	{
+		EditorMode EditorMode = Mode2D,
+		bool ViewCube = true,
+		float ViewCubeViewportSize = 150,
+		ScriptReloadMethod ScriptReloadEditor = ReInitializeObjects,
+		ScriptReloadMethod ScriptReloadGame = PatchObjects,
+		bool AutoUpdateContentChanges = true,
+	},
+	ProjectDescription = 
+	{
+		string ShortDescription = "",
+		string LongDescription = "",
+		string Tags = "",
+	},
+},

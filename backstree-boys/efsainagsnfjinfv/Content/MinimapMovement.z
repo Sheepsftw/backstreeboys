@@ -1,0 +1,51 @@
+class MinimapMovement : ZilchComponent
+{
+    [Property]
+    var ThisPlayer : Integer = 0;
+    [Property]
+    var EndGoal : CogPath = null;
+    
+    var MaxHeight : Real;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        this.MaxHeight = this.EndGoal.Cog.Transform.Translation.Y;
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var location = Real3();
+        location.Z += 1;
+        var miniTrunk = this.Space.FindObjectByName("CenterCamera");
+        location.X = miniTrunk.Transform.Translation.X;
+        var player : Cog = null;
+        if(this.ThisPlayer == 0)
+        {
+            player = this.Space.FindObjectByName("Player1");
+        }
+        else if(this.ThisPlayer == 1)
+        {
+            player = this.Space.FindObjectByName("Player2");
+        }
+        else if(this.ThisPlayer == 2)
+        {
+            player = this.Space.FindObjectByName("Player3");
+        }
+        else
+        {
+            player = this.Space.FindObjectByName("Player4");
+        }
+        var playerHeight = player.Transform.Translation.Y;
+        var left = (this.MaxHeight - playerHeight)/this.MaxHeight;
+        location.Y = (0.5 - left) * 60;
+        this.Owner.Transform.Translation = location;
+        if(player.Sprite.FlipX)
+        {
+            this.Owner.Sprite.FlipX = true;
+        }
+        else
+        {
+            this.Owner.Sprite.FlipX = false;
+        }
+    }
+}

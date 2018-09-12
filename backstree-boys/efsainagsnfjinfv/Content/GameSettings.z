@@ -1,0 +1,35 @@
+class GameSettings : ZilchComponent
+{
+    var IsKeyboardControls : Boolean = true;
+    
+    var CharacterSelected : Integer = 0;
+    var CharacterSelectMax : Integer = 3;
+    
+    var NumberOfCharacters : Integer = 2;
+    var CharacterArray : Array[Integer] = new Array[Integer]();
+    
+    function Initialize(init : CogInitializer)
+    {
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        
+    }
+
+    function SetCharacterSelection(character : Integer)
+    {
+        if ((character < 0) || (character >= this.CharacterSelectMax))
+        {
+            Console.WriteLine("Bad character selection [`character`]!");
+            return;
+        }
+        this.CharacterArray.Add(character);
+    }
+    
+    function GetCharacterSelection(index : Integer) : Integer
+    {
+        return this.CharacterArray.Get(index);
+    }
+    
+//    function OnLogicUpdate(event : UpdateEvent)
+//    {
+//    }
+}

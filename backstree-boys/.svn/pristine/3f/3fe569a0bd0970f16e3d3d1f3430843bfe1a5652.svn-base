@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "treasurechest000",
+		uint64 ResourceId = 57df61c4481af7ba,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 360,
+		uint FrameSizeY = 360,
+		uint FrameCount = 1,
+		float FrameDelay = 0.0833333358,
+		float OriginX = 180,
+		float OriginY = 180,
+		float PixelsPerUnit = 280,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

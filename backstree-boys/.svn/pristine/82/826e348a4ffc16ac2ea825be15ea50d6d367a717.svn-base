@@ -1,0 +1,52 @@
+class ScreenLabel : ZilchComponent
+{
+    [Property]
+    var PlayerIndex : Integer = 0;
+    
+    [Property]
+    var CountdownTimer :Integer = 0;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var camera : Cog = null;
+        if(this.CountdownTimer > 2)
+        {
+            if(this.PlayerIndex == 0)
+            {
+                camera = this.Space.FindObjectByName("Player1Camera");
+                this.Owner.Sprite.SpriteSource = SpriteSource.Find("player1");
+            }
+            else if(this.PlayerIndex == 1)
+            {
+                camera = this.Space.FindObjectByName("Player2Camera");
+                this.Owner.Sprite.SpriteSource = SpriteSource.Find("player2");
+            }
+            else if(this.PlayerIndex == 2)
+            {
+                camera = this.Space.FindObjectByName("Player3Camera");
+                this.Owner.Sprite.SpriteSource = SpriteSource.Find("player3");
+            }
+            else
+            {
+                camera = this.Space.FindObjectByName("Player4Camera");
+                this.Owner.Sprite.SpriteSource = SpriteSource.Find("player4");
+            }
+            var location = camera.Transform.Translation;
+            var newlocation = Real3();
+            newlocation.X = location.X - 0.5;
+            newlocation.Y = location.Y + 25;
+            newlocation.Z = 1;
+            this.Owner.Transform.Translation = newlocation;
+            if(this.CountdownTimer == 320)
+            {
+                this.Owner.Sprite.Visible = false;
+            }
+        }   
+        ++this.CountdownTimer;
+    }
+}

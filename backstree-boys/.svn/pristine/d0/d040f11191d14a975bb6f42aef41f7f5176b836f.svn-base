@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "CountdownAudio",
+		uint64 ResourceId = 57ce06a2d41a05f5,
+	},
+},

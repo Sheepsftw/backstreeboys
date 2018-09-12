@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "PlatformGhosting",
+		uint64 ResourceId = 57da506ab6a5903f,
+	},
+},

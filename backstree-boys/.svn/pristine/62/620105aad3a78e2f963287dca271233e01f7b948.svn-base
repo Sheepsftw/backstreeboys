@@ -1,0 +1,53 @@
+class SpawnPlayers : ZilchComponent
+{
+    var PlayerNumber : Integer; 
+    function Initialize(init : CogInitializer)
+    {
+        this.PlayerNumber = this.GameSession.GameSettings.CharacterArray.Count;
+        var index = 0;
+        if(this.GameSession.GameSettings.IsKeyboardControls)
+        {
+            for(index = 0; index < this.PlayerNumber; ++index)
+            {
+                var thisSprite : SpriteSource = null;
+                var characterNumber : Integer = this.GameSession.GameSettings.CharacterArray.Get(index);
+                if(characterNumber == 0)
+                {
+                    thisSprite = SpriteSource.Find("lilM");
+                }
+                else if(characterNumber == 1)
+                {
+                    thisSprite = SpriteSource.Find("yonce");
+                }
+                else
+                {
+                    thisSprite = SpriteSource.Find("spruceleestill");
+                }
+                var location = this.Owner.Transform.Translation;
+                location.X += index*10;
+                var thisPlayer = this.Space.CreateAtPosition(Archetype.Find("Player"), location);
+                thisPlayer.Sprite.SpriteSource = thisSprite;
+                if(index == 0)
+                {
+                    thisPlayer.Name = "Player1";
+                }
+                else
+                {
+                    thisPlayer.Player1Input.Up = Keys.Up;
+                    thisPlayer.Player1Input.Left = Keys.Left;
+                    thisPlayer.Player1Input.Right = Keys.Right;
+                    thisPlayer.Name = "Player2";
+                }
+            }
+        }
+        else
+        {
+            
+        }
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+}

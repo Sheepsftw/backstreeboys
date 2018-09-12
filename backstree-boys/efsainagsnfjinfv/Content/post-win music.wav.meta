@@ -1,0 +1,11 @@
+AudioContent = 
+{
+	SoundBuilder = 
+	{
+		string Name = "post-win music",
+		uint64 ResourceId = 57f7f17b93f37df6,
+		bool Compressed = false,
+		uint Quality = 100,
+		SoundLoadType LoadType = Decompress,
+	},
+},

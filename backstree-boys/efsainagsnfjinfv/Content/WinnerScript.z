@@ -1,0 +1,37 @@
+class WinnerScript : ZilchComponent
+{
+    
+    function Initialize(init : CogInitializer)
+    {
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+    }
+    
+    function OnCollisionStarted(event : CollisionEvent)
+    {
+        Console.Write(event.OtherObject.Name);
+        Console.WriteLine(" wins!");
+        
+        if (event.OtherObject.Name == "Player1") {
+            
+            this.Space.LoadLevel(Level.Find("P1WinScreen"));
+        } 
+        else if(event.OtherObject.Name == "Player2")
+        {
+            this.Space.LoadLevel(Level.Find("P2WinScreen"));
+        }
+        else if(event.OtherObject.Name == "Player3")
+        {
+            this.Space.LoadLevel(Level.Find("P3WinScreen"));
+        }
+        else
+        {
+            this.Space.LoadLevel(Level.Find("P4WinScreen"));
+        }
+        // this.Space.LoadLevel(this.ReturnLevel);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+}

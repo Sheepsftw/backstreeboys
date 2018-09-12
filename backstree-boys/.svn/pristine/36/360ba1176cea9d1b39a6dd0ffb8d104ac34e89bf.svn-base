@@ -1,0 +1,171 @@
+class EnemyController : ZilchComponent
+{
+function ChaseTarget(event: UpdateEvent)
+{    
+}
+function CalculateChaseDirectionAndDistance()
+{
+    // Get direction toward target
+    this.ChaseDirection = this.TargetObject.Transform.Translation - this.Owner.Transform.Translation;
+    this.ChaseDirection2 = this.TargetObject2.Transform.Translation - this.Owner.Transform.Translation;
+    // Extract distance by finding magnitude
+    this.DistanceFromTarget = Math.Length(this.ChaseDirection);
+    this.DistanceFromTarget2 = Math.Length(this.ChaseDirection2);
+    // Extract direction by normalizing
+    this.ChaseDirection = Math.Normalize(this.ChaseDirection);
+    this.ChaseDirection2 = Math.Normalize(this.ChaseDirection2);
+}
+    //Pacing properties and variables
+    [Property]
+    var PaceSpeed: Real = 10.0;
+    [Property]
+    var MaxMoveDistance: Real = 10.0;
+    var PaceDirection: Real3 = Real3(1.0, 0.0, 0.0);
+    var StartPosition: Real3 = Real3();
+    
+    // Chasing Properties and variables
+var TargetObject: Cog = null;
+var TargetObject2 : Cog = null;
+[Property]
+var ChaseTriggerDistance: Real = 7.0;
+var DistanceFromTarget: Real = 0.0;
+var DistanceFromTarget2: Real = 0.0;
+var ChaseDirection: Real3 = Real3();
+var ChaseDirection2 : Real3 = Real3();
+var TargetIsWithinRange: Boolean = false;
+var TargetIsWithinRange2: Boolean = false;
+
+// Shooting Properties
+[Property]
+var ShootDelay: Real = 1.0;
+var NextShot: Real = 1.0;
+
+var Targeted : Integer = 0;
+
+// Dependencies
+[Dependency]
+var Transform: Transform = null;
+[Dependency]
+var Sprite: Sprite = null;
+
+    function Initialize(init : CogInitializer)
+    {
+        // We need to update the enemy's behavior every logic update
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        // Have to know where we started to know how far we've moved
+        this.StartPosition = this.Owner.Transform.Translation;
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        this.TargetObject = this.Space.FindObjectByName("Player1");
+        this.TargetObject2 = this.Space.FindObjectByName("Player2");
+    // Reevaluate the situation to determine if our object should pursue
+    this.TargetIsWithinRange = false;
+    this.TargetIsWithinRange2 = false;
+    // If our target exists
+    if (this.TargetObject != null && this.TargetObject2 != null)
+    {
+        
+        // Calculate the direction and distance of target
+        this.CalculateChaseDirectionAndDistance();
+        // Evaluate whether Ai should chase or pace
+        this.TargetIsWithinRange = (this.DistanceFromTarget <= this.ChaseTriggerDistance);
+        this.TargetIsWithinRange2 = (this.DistanceFromTarget2 <= this.ChaseTriggerDistance);
+
+        if (this.TargetIsWithinRange)
+        {
+            
+            if(this.Targeted != 2)
+            {
+                // Chase target
+                this.ChaseTarget(event);
+                // Shoot target
+                this.ShootAtTarget(event);
+                
+                this.Targeted = 1;
+            }
+        }
+        if(this.TargetIsWithinRange2)
+        {
+            if(this.Targeted != 1)
+            {
+                // Chase target
+                this.ChaseTarget(event);
+                // Shoot target
+                this.ShootAtTarget2(event);
+                this.Targeted = 2;
+            }
+        }
+        if(!this.TargetIsWithinRange && !this.TargetIsWithinRange2) // If target not in range
+        {
+            this.Targeted = 0;
+            // Pace back and forth
+            this.PaceBackAndForth(event);
+        }
+}
+else // if there is no target, pace
+{
+    // Logic for pacing back and forth
+    this.PaceBackAndForth(event);
+}
+    }
+
+    function PaceBackAndForth(event: UpdateEvent)
+    {
+  // Find out how far we've travelled from our start position
+  var displacement = this.Owner.Transform.Translation - this.StartPosition;
+  var distanceFromStart = Math.Length(displacement);
+
+  // If we have travelled past our max distance
+  if (distanceFromStart >= this.MaxMoveDistance)
+  {
+        // Change direction to go back the way we came
+        this.PaceDirection = -displacement;
+        
+  }
+
+  // Ensure the PaceDirection is only a direction via normlization
+  this.PaceDirection = Math.Normalize(this.PaceDirection);
+  
+  // Apply movement
+  this.Owner.Transform.Translation += this.PaceDirection * event.Dt * this.PaceSpeed;
+}
+    function ShootAtTarget(event: UpdateEvent)
+    {
+        
+    // Don't shoot until the next shot timer is reached
+    if (event.TimePassed > this.NextShot)
+    {
+        // Update next shot timer
+        this.NextShot = event.TimePassed + this.ShootDelay;
+        // Create a projectile originating from the enemy's position
+        var projectileObject = this.Space.CreateAtPosition(Archetype.Find("EnemyProjectile"), this.Owner.Transform.Translation);
+        if (projectileObject != null)
+        {
+            // Shoot in the direction of the target (which is the same as the chase Direction)
+            projectileObject.Projectile.Direction = this.ChaseDirection;
+            // Make sure projectile moves faster than the enemy
+                projectileObject.Projectile.Speed = 15.0;
+            }
+        }
+    }
+    function ShootAtTarget2(event: UpdateEvent)
+    {
+    // Don't shoot until the next shot timer is reached
+    if (event.TimePassed > this.NextShot)
+    {
+        // Update next shot timer
+        this.NextShot = event.TimePassed + this.ShootDelay;
+        // Create a projectile originating from the enemy's position
+        var projectileObject = this.Space.CreateAtPosition(Archetype.Find("EnemyProjectile"), this.Owner.Transform.Translation);
+        if (projectileObject != null)
+        {
+            // Shoot in the direction of the target (which is the same as the chase Direction)
+            projectileObject.Projectile.Direction = this.ChaseDirection2;
+            // Make sure projectile moves faster than the enemy
+                projectileObject.Projectile.Speed = 15.0;
+            }
+        }
+    }
+}

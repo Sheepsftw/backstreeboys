@@ -1,0 +1,29 @@
+Cog = 
+{
+	Project = 
+	{
+		string ProjectName = "efsainagsnfjinfv",
+		string ProjectOwner = "",
+		string DefaultLevel = "Level",
+		string ProjectSpace = "Space",
+		string ProjectFolder = "C:\Users\richard.dong\Desktop\asdgufsadfv\efsainagsnfjinfv",
+		uint ProjectEngineRevision = 13602,
+		bool AutoTakeProjectScreenshot = true,
+		uint64 Guid = 57d319b105690eab,
+	},
+	EditorSettings = 
+	{
+		EditorMode EditorMode = Mode2D,
+		bool ViewCube = true,
+		float ViewCubeViewportSize = 150,
+		ScriptReloadMethod ScriptReloadEditor = ReInitializeObjects,
+		ScriptReloadMethod ScriptReloadGame = PatchObjects,
+		bool AutoUpdateContentChanges = true,
+	},
+	ProjectDescription = 
+	{
+		string ShortDescription = "",
+		string LongDescription = "",
+		string Tags = "",
+	},
+},

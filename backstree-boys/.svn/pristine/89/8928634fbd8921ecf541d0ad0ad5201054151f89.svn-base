@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "stunyonce",
+		uint64 ResourceId = 57f6844eae6606b2,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 216,
+		uint FrameSizeY = 360,
+		uint FrameCount = 4,
+		float FrameDelay = 0.130532235,
+		float OriginX = 108,
+		float OriginY = 225,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

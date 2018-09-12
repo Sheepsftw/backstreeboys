@@ -1,0 +1,46 @@
+Cog = 
+{
+	LinkId = 
+	{
+		uint Id = 1,
+	},
+	Named = 
+	{
+		string Name = "Monkey",
+	},
+	Archetyped = 
+	{
+		string Name = "57c66a36d9a37f0b:Enemy",
+	},
+	Transform = 
+	{
+		Vec3 Translation = [-38.8135147, 292.688232, 0],
+		Vec3 Scale = [3.32878518, 3.43274951, 1],
+		Quat Rotation = [0, 0, 0, 1],
+	},
+	Sprite = 
+	{
+		bool Visible = true,
+		bool VisibilityCulling = true,
+		bool VisibilityEvents = true,
+		bool CastShadows = false,
+		Vec4 Color = [1, 1, 1, 1],
+		BlendMode BlendMode = Alpha,
+		SpriteGeometryMode GeometryMode = ZPlane,
+		string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+		string SpriteSource = "57f1339b5ec48820:monkeyanim",
+		bool RenderMask = false,
+		bool FlipX = false,
+		bool FlipY = false,
+		bool AnimationActive = true,
+		float AnimationSpeed = 1,
+		uint StartFrame = 0,
+	},
+	EnemyController = 
+	{
+		float PaceSpeed = 10,
+		float MaxMoveDistance = 10,
+		float ChaseTriggerDistance = 20,
+		float ShootDelay = 2.5,
+	},
+},

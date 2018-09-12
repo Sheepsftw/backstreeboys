@@ -1,0 +1,93 @@
+Cog = 
+{
+	LinkId = 
+	{
+		uint Id = 1,
+	},
+	Named = 
+	{
+		string Name = "Player1",
+	},
+	Archetyped = 
+	{
+		string Name = "57d8c4d4ac846ee3:Player",
+	},
+	Transform = 
+	{
+		Vec3 Translation = [0, 0, 0],
+		Vec3 Scale = [2, 2, 1],
+		Quat Rotation = [0, 0, 0, 1],
+	},
+	Sprite = 
+	{
+		bool Visible = true,
+		bool VisibilityCulling = true,
+		bool VisibilityEvents = true,
+		bool CastShadows = false,
+		Vec4 Color = [1, 1, 1, 1],
+		BlendMode BlendMode = Alpha,
+		SpriteGeometryMode GeometryMode = ZPlane,
+		string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+		string SpriteSource = "57d8e6dc6eda4190:spruceleestill",
+		bool RenderMask = false,
+		bool FlipX = false,
+		bool FlipY = false,
+		bool AnimationActive = true,
+		float AnimationSpeed = 1,
+		uint StartFrame = 0,
+	},
+	RigidBody = 
+	{
+		bool Static = false,
+		bool Asleep = false,
+		bool Kinematic = true,
+		bool RotationLocked = false,
+		bool Mode2D = false,
+		bool AllowSleep = true,
+		bool Inherit2DMode = true,
+		Vec3 Velocity = [0, 0, 0],
+		Vec3 AngularVelocity = [0, 0, 0],
+	},
+	BoxCollider = 
+	{
+		bool Ghost = true,
+		bool SendsMessages = true,
+		bool Seamless = true,
+		string MaterialName = "57d307bd5566952d:PlayerMaterial",
+		string SerializedGroupName = "57d33189f361033b:PlayerCollision",
+		Vec3 Offset = [0, 0.400000006, 0],
+		Vec3 Size = [0.649999976, 2.1500001, 0.5],
+	},
+	SweptController = 
+	{
+		Vec3 WorldUp = [0, 1, 0],
+		bool LockZAxis = false,
+		bool ForwardEvents = false,
+		float Gravity = 100,
+		float JumpSpeed = 50,
+		float JumpCancelFactor = 0.5,
+		float MaxMoveSpeed = 40,
+		float MaxFallSpeed = 100,
+		float GroundAcceleration = 200,
+		float AirAcceleration = 40,
+		float GroundDeceleration = 200,
+		float AirDeceleration = 40,
+		float MaxGroundSlope = 45,
+		float MaxCeilingSlope = 45,
+		float GroundSnapDistance = 0.100000001,
+		Vec3 ControllerVelocity = [0, 0, 0],
+		bool Grounded = true,
+		bool Jumping = false,
+		float GroundTraction = 1,
+		float AirTraction = 1,
+	},
+	Player1Input = 
+	{
+		Enum Left = A,
+		Enum Right = D,
+		Enum Up = W,
+	},
+	Hierarchy = 
+	{
+	},
+},

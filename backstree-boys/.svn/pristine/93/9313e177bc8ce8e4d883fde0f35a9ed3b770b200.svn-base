@@ -1,0 +1,19 @@
+class KeyboardCharacterSelectionCamera : ZilchComponent
+{
+    var Finished : Boolean = false;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Console.WriteLine("Worked!");
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        Console.WriteLine("why");
+        if(this.Finished)
+        {
+            this.Owner.Transform.Translation.X == 50;
+        }
+    }
+}

@@ -1,0 +1,80 @@
+class Spawner : ZilchComponent
+{
+function CalculateChaseDirectionAndDistance()
+{
+    // Get direction toward target
+    this.ChaseDirection = this.TargetObject.Cog.Transform.Translation - this.Owner.Transform.Translation;
+    // Extract distance by finding magnitude
+    this.DistanceFromTarget = Math.Length(this.ChaseDirection);
+    // Extract direction by normalizing
+    this.ChaseDirection = Math.Normalize(this.ChaseDirection);
+}
+    
+    // Chasing Properties and variables
+[Property]
+var TargetObject: CogPath = null;
+[Property]
+var ChaseTriggerDistance: Real = 7.0;
+var DistanceFromTarget: Real = 0.0;
+var ChaseDirection: Real3 = Real3();
+var TargetIsWithinRange: Boolean = false;
+
+// Shooting Properties
+[Property]
+var ShootDelay: Real = 1.0;
+var NextShot: Real = 1.0;
+
+// Dependencies
+[Dependency]
+var Transform: Transform = null;
+[Dependency]
+var Sprite: Sprite = null;
+
+    function Initialize(init : CogInitializer)
+    {
+        // We need to update the enemy's behavior every logic update
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    // Reevaluate the situation to determine if our object should pursue
+    this.TargetIsWithinRange = false;
+
+    // If our target exists
+    if (this.TargetObject.Cog != null)
+    {
+        // Calculate the direction and distance of target
+        this.CalculateChaseDirectionAndDistance();
+        // Evaluate whether Ai should chase or pace
+        this.TargetIsWithinRange = (this.DistanceFromTarget <= this.ChaseTriggerDistance);
+
+        if (this.TargetIsWithinRange)
+        {
+            // Shoot target
+            this.ShootAtTarget(event);
+        }
+        else // If target not in range
+        {
+        }
+    }
+}
+    function ShootAtTarget(event: UpdateEvent)
+    {
+    // Don't shoot until the next shot timer is reached
+    if (event.TimePassed > this.NextShot)
+    {
+        // Update next shot timer
+        this.NextShot = event.TimePassed + this.ShootDelay;
+        // Create a projectile originating from the enemy's position
+        var projectileObject = this.Space.CreateAtPosition(Archetype.Find("Rock"), this.Owner.Transform.Translation);
+        if (projectileObject != null)
+        {
+            // Shoot in the direction of the target (which is the same as the chase Direction)
+            projectileObject.Projectile.Direction = this.ChaseDirection;
+            // Make sure projectile moves faster than the enemy
+            // projectileObject.Projectile.Speed = 15.0;
+            }
+        }
+    }
+}

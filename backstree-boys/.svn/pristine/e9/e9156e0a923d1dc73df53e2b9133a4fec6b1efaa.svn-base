@@ -1,0 +1,24 @@
+class PlatformGhosting : ZilchComponent
+{
+    [Dependency]
+    var Collide : BoxCollider;
+    
+    var Counter : Integer = 0;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if(this.Counter < 240)
+        {
+            this.Owner.BoxCollider.Ghost = true;
+        }
+        else
+        {
+            this.Owner.BoxCollider.Ghost = false;
+        }
+        ++this.Counter;
+    }
+}

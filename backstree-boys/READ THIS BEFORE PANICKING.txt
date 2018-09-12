@@ -1,0 +1,5 @@
+The original level was renamed to TreeFall.Level
+
+In the library, use the tag Level to find/edit it.
+
+IT'S NOT GONE PLEASE DON'T KILL ME

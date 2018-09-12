@@ -1,0 +1,35 @@
+class CameraMovement : ZilchComponent
+{
+    [Property]
+    var FollowThis : Integer;
+    
+    function Initialize(init : CogInitializer)
+    {
+        //this.FollowThis = this.Space.FindObjectByName("Player1");
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var thisPlayer : Cog = null;
+        if(this.FollowThis == 0)
+        {
+            thisPlayer = this.Space.FindObjectByName("Player1");
+        }
+        else if(this.FollowThis == 1)
+        {
+            thisPlayer = this.Space.FindObjectByName("Player2");
+        }
+        else if(this.FollowThis == 2)
+        {
+            thisPlayer = this.Space.FindObjectByName("Player3");
+        }
+        else
+        {
+            thisPlayer = this.Space.FindObjectByName("Player4");
+        }
+        var newcam = thisPlayer.Transform.LocalTranslation;
+        newcam.Z = 80;
+        this.Owner.Transform.LocalTranslation = newcam;
+    }
+}

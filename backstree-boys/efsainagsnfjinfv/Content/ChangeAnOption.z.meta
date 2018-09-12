@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "ChangeAnOption",
+		uint64 ResourceId = 57d9953ef3291589,
+	},
+},

@@ -1,0 +1,11 @@
+AudioContent = 
+{
+	SoundBuilder = 
+	{
+		string Name = "monkey_0",
+		uint64 ResourceId = 57ce8abf289ff0a8,
+		bool Compressed = false,
+		uint Quality = 100,
+		SoundLoadType LoadType = Decompress,
+	},
+},

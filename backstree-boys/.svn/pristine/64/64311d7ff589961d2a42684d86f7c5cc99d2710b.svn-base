@@ -1,0 +1,3771 @@
+Level = 
+{
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 1,
+		},
+		Named = 
+		{
+			string Name = "LevelSettings",
+		},
+		GravityEffect = 
+		{
+			bool Active = true,
+			bool WakeUpOnChange = false,
+			bool LocalSpaceDirection = true,
+			float Strength = 10,
+			Vec3 Direction = [0, -1, 0],
+		},
+		DragEffect = 
+		{
+			bool Active = true,
+			bool WakeUpOnChange = false,
+			float Drag = 0.699999988,
+			float AngularDrag = 0.100000001,
+		},
+		GridDraw = 
+		{
+			bool Active = true,
+			bool HalfCellOffset = false,
+			float CellSize = 1,
+			GridAxis Axis = ZAxis,
+			int Lines = 100,
+			bool DrawAxisOrigins = true,
+			bool AlwaysDrawInEditor = true,
+			bool DrawInGame = false,
+			Vec4 GridColor = [0.5, 0.5, 0.5, 0.400000006],
+			Vec4 GridHiLight = [0, 0, 0, 0.400000006],
+			int HilightInterval = 10,
+			bool FollowEditorCamera = false,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 2,
+		},
+		Named = 
+		{
+			string Name = "EditorCamera",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-52.6943932, 293.555756, 129.998993],
+			Vec3 Scale = [1, 1, 1],
+			Quat Rotation = [-0, -1.09278471e-08, 0, 1],
+		},
+		Camera = 
+		{
+			ProjectionMode ProjectionMode = Orthographic,
+			Facing Facing = NegativeZ,
+			CameraTransparentSort TransparentSort = ZDepth,
+			float FieldOfView = 45,
+			float NearPlane = 0.5,
+			float FarPlane = 500,
+			float Size = 67.0320358,
+		},
+		EditorCameraController = 
+		{
+			ControlMode ControlMode = ZPlane,
+			float LookDistance = 50,
+			float VerticalAngle = 0,
+			float HorizontalAngle = 0,
+			Vec3 LookTarget = [-52.6943932, 293.555756, 79.9990005],
+			float MoveSensitivity = 1,
+		},
+		EditorRenderer = 
+		{
+			Vec4 ClearColor = [0.155000001, 0.155000001, 0.155000001, 1],
+			bool DrawNonVisible = true,
+			bool DrawDebugObjects = true,
+			bool DrawEditorIcons = true,
+			bool Wireframe = false,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 3,
+		},
+		Named = 
+		{
+			string Name = "Player1Camera",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-5.75342369, 0, 80],
+			Vec3 Scale = [1, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Camera = 
+		{
+			ProjectionMode ProjectionMode = Perspective,
+			Facing Facing = NegativeZ,
+			CameraTransparentSort TransparentSort = InheritFromSpace,
+			float FieldOfView = 45,
+			float NearPlane = 0.5,
+			float FarPlane = 200,
+			float Size = 20,
+		},
+		SoundListener = 
+		{
+			bool Active = true,
+			float Volume = 1,
+		},
+		ForwardRenderer = 
+		{
+			Vec4 ClearColor = [0, 0, 0, 1],
+			bool DrawNonVisible = false,
+			bool DrawDebugObjects = true,
+			bool DrawEditorIcons = true,
+			bool EditorIconDepth = true,
+			bool Wireframe = false,
+		},
+		CameraViewport = 
+		{
+			bool Background = true,
+			Vec2 Offset = [0, 0],
+			Vec2 Size = [0.5, 1],
+			int Layer = 0,
+			bool Active = true,
+			bool Blocking = true,
+			CogPath Renderer = 
+			{
+				string Path = ".",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 3,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
+			CogPath Camera = 
+			{
+				string Path = ".",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 3,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
+			ViewportScaling Scaling = Fill,
+			Vec2 Resolution = [1280, 720],
+			Vec4 MarginColor = [0, 0, 0, 1],
+		},
+		CameraMovement = 
+		{
+			int FollowThis = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 4,
+		},
+		Named = 
+		{
+			string Name = "CenterCamera",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-200, 0, 80],
+			Vec3 Scale = [1, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Camera = 
+		{
+			ProjectionMode ProjectionMode = Orthographic,
+			Facing Facing = NegativeZ,
+			CameraTransparentSort TransparentSort = InheritFromSpace,
+			float FieldOfView = 45,
+			float NearPlane = 0.5,
+			float FarPlane = 200,
+			float Size = 64,
+		},
+		SoundListener = 
+		{
+			bool Active = false,
+			float Volume = 1,
+		},
+		ForwardRenderer = 
+		{
+			Vec4 ClearColor = [0, 0, 0, 1],
+			bool DrawNonVisible = false,
+			bool DrawDebugObjects = true,
+			bool DrawEditorIcons = true,
+			bool EditorIconDepth = true,
+			bool Wireframe = false,
+		},
+		CameraViewport = 
+		{
+			bool Background = true,
+			Vec2 Offset = [0.474999994, 0],
+			Vec2 Size = [0.0500000007, 1],
+			int Layer = 0,
+			bool Active = true,
+			bool Blocking = true,
+			CogPath Renderer = 
+			{
+				string Path = ".",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 4,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
+			CogPath Camera = 
+			{
+				string Path = ".",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 4,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
+			ViewportScaling Scaling = Fill,
+			Vec2 Resolution = [1280, 720],
+			Vec4 MarginColor = [0, 0, 0, 1],
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 5,
+		},
+		Named = 
+		{
+			string Name = "Player2Camera",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [4.79452038, 0, 80],
+			Vec3 Scale = [1, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Camera = 
+		{
+			ProjectionMode ProjectionMode = Perspective,
+			Facing Facing = NegativeZ,
+			CameraTransparentSort TransparentSort = InheritFromSpace,
+			float FieldOfView = 45,
+			float NearPlane = 0.5,
+			float FarPlane = 200,
+			float Size = 20,
+		},
+		SoundListener = 
+		{
+			bool Active = true,
+			float Volume = 1,
+		},
+		ForwardRenderer = 
+		{
+			Vec4 ClearColor = [0, 0, 0, 1],
+			bool DrawNonVisible = false,
+			bool DrawDebugObjects = true,
+			bool DrawEditorIcons = true,
+			bool EditorIconDepth = true,
+			bool Wireframe = false,
+		},
+		CameraViewport = 
+		{
+			bool Background = true,
+			Vec2 Offset = [0.5, 0],
+			Vec2 Size = [0.5, 1],
+			int Layer = 0,
+			bool Active = true,
+			bool Blocking = true,
+			CogPath Renderer = 
+			{
+				string Path = ".",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 5,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
+			CogPath Camera = 
+			{
+				string Path = ".",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 5,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
+			ViewportScaling Scaling = Fill,
+			Vec2 Resolution = [1280, 720],
+			Vec4 MarginColor = [0, 0, 0, 1],
+		},
+		CameraMovement = 
+		{
+			int FollowThis = 1,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 6,
+		},
+		Named = 
+		{
+			string Name = "Platform",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-3.20893097, -4, 0],
+			Vec3 Scale = [106.407349, 1.42232704, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [0.25724107, 0.569999993, 0.0655500293, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "5275aa4d802dd6dc:Square",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		RigidBody = 
+		{
+			bool Static = true,
+			bool Asleep = false,
+			bool Kinematic = false,
+			bool RotationLocked = false,
+			bool Mode2D = true,
+			bool AllowSleep = true,
+			bool Inherit2DMode = true,
+			Vec3 Velocity = [0, 0, 0],
+			Vec3 AngularVelocity = [0, 0, 0],
+		},
+		BoxCollider = 
+		{
+			bool Ghost = false,
+			bool SendsMessages = true,
+			bool Seamless = true,
+			string MaterialName = "4de020863e872da8:DefaultPhysicsMaterial",
+			string SerializedGroupName = "4e740859314e5515:DefaultGroup",
+			Vec3 Offset = [0, 0, 0],
+			Vec3 Size = [0.5, 0.5, 0.5],
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57d1bdbd4bc60d48:Left1",
+		LinkId = 
+		{
+			uint Id = 7,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [0, -90, 0],
+			Vec3 Scale = [45, 1, 1],
+			Quat Rotation = [0, 0, -0.0436193869, 0.999048233],
+		},
+		Named = 
+		{
+			string Name = "Platform 5",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57d1bdbd4bc60d48:Left1",
+		LinkId = 
+		{
+			uint Id = 8,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [0, -100, 0],
+			Vec3 Scale = [45, 1, 1],
+			Quat Rotation = [0, 0, 0.0436193869, 0.999048233],
+		},
+		Named = 
+		{
+			string Name = "Platform 6",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57d1bdbd4bc60d48:Left1",
+		LinkId = 
+		{
+			uint Id = 9,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [0, -50, 0],
+			Vec3 Scale = [30, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Platform 1",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57d1bdbd4bc60d48:Left1",
+		LinkId = 
+		{
+			uint Id = 10,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [0, -70, 0],
+			Vec3 Scale = [10, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Platform 3b",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57d1bdbd4bc60d48:Left1",
+		LinkId = 
+		{
+			uint Id = 11,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-12.5, -80, 0],
+			Vec3 Scale = [15, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Platform 4a",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57d1bdbd4bc60d48:Left1",
+		LinkId = 
+		{
+			uint Id = 12,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [25, -70, 0],
+			Vec3 Scale = [10, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Platform 3c",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57d1bdbd4bc60d48:Left1",
+		LinkId = 
+		{
+			uint Id = 13,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [12.5, -80, 0],
+			Vec3 Scale = [15, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Platform 4b",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57d1bdbd4bc60d48:Left1",
+		LinkId = 
+		{
+			uint Id = 14,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-12.5, -60, 0],
+			Vec3 Scale = [17.2804585, 1, 1],
+			Quat Rotation = [0, 0, -0.087155737, 0.99619472],
+		},
+		Named = 
+		{
+			string Name = "Platform 2a",
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 15,
+		},
+		Named = 
+		{
+			string Name = "Platform 3a",
+		},
+		Archetyped = 
+		{
+			string Name = "57d1bdbd4bc60d48:Left1",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-25, -70, 0],
+			Vec3 Scale = [10, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [0.290000021, 0.00290000439, 0.0718040764, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "5275aa4d802dd6dc:Square",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		RigidBody = 
+		{
+			bool Static = true,
+			bool Asleep = false,
+			bool Kinematic = false,
+			bool RotationLocked = false,
+			bool Mode2D = true,
+			bool AllowSleep = true,
+			bool Inherit2DMode = true,
+			Vec3 Velocity = [0, 0, 0],
+			Vec3 AngularVelocity = [0, 0, 0],
+		},
+		BoxCollider = 
+		{
+			bool Ghost = false,
+			bool SendsMessages = true,
+			bool Seamless = true,
+			string MaterialName = "4de020863e872da8:DefaultPhysicsMaterial",
+			string SerializedGroupName = "4e740859314e5515:DefaultGroup",
+			Vec3 Offset = [0, 0, 0],
+			Vec3 Size = [0.5, 0.5, 0.5],
+		},
+		Hierarchy = 
+		{
+			ArchetypeInstance = 
+			{
+				string Name = "57d1bdbd4bc60d48:Left1",
+				LinkId = 
+				{
+					uint Id = 16,
+				},
+				Transform = 
+				{
+					Vec3 Translation = [3.75, 10, 0],
+					Vec3 Scale = [3.44969821, 0.984960794, 1],
+					Quat Rotation = [0, 0, 0.431398869, 0.902161419],
+				},
+				Named = 
+				{
+					string Name = "Platform 2b",
+				},
+			},
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 17,
+		},
+		Named = 
+		{
+			string Name = "WinCondition",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [1.41710281, 314.326965, 0],
+			Vec3 Scale = [9.43335819, 9.8112936, 1.34246826],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57df61c4481af7ba:treasurechest000",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		BoxCollider = 
+		{
+			bool Ghost = true,
+			bool SendsMessages = true,
+			bool Seamless = true,
+			string MaterialName = "4de020863e872da8:DefaultPhysicsMaterial",
+			string SerializedGroupName = "57d0e91f9c26c9a0:WinCondition",
+			Vec3 Offset = [0, 0, 0],
+			Vec3 Size = [0.5, 0.5, 0.5],
+		},
+		WinnerScript = 
+		{
+			string ReturnLevel = "57eff178df2ede9b:WinScreen",
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 18,
+		},
+		Named = 
+		{
+			string Name = "BAckupWIn",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-2.89868689, 31.3795681, 0],
+			Vec3 Scale = [9.43335819, 9.8112936, 1.34246826],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57df61c4481af7ba:treasurechest000",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		BoxCollider = 
+		{
+			bool Ghost = true,
+			bool SendsMessages = true,
+			bool Seamless = true,
+			string MaterialName = "4de020863e872da8:DefaultPhysicsMaterial",
+			string SerializedGroupName = "57d0e91f9c26c9a0:WinCondition",
+			Vec3 Offset = [0, 0, 0],
+			Vec3 Size = [0.5, 0.5, 0.5],
+		},
+		WinnerScript = 
+		{
+			string ReturnLevel = "57eff178df2ede9b:WinScreen",
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 19,
+		},
+		Named = 
+		{
+			string Name = "back1",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [454.749146, 89.7078171, -50],
+			Vec3 Scale = [10.3019266, 13.3758297, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57e7f30277884472:back1",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 20,
+		},
+		Named = 
+		{
+			string Name = "sky",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [75.8564148, 250.261353, -50.5],
+			Vec3 Scale = [10.9617939, 3.03041005, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57e803f223d9b600:sky",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 21,
+		},
+		Named = 
+		{
+			string Name = "sky",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [461.155029, 250.892792, -50.5],
+			Vec3 Scale = [10.9617939, 3.03041005, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57e803f223d9b600:sky",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 22,
+		},
+		Named = 
+		{
+			string Name = "MinimapTrunk",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-200, -0.171234131, 0],
+			Vec3 Scale = [10, 150, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [0.399999976, 0.0380000174, 0.0380000174, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "5275aa4d802dd6dc:Square",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 23,
+		},
+		Named = 
+		{
+			string Name = "Player1Minimap",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-186.988388, -33.0977211, 80],
+			Vec3 Scale = [8, 8, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57da44606d866ad3:lilMhead000",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		MinimapMovement = 
+		{
+			int ThisPlayer = 0,
+			CogPath EndGoal = 
+			{
+				string Path = ":/WinCondition",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 17,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 24,
+		},
+		Named = 
+		{
+			string Name = "Player2Minimap",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-200.009384, -31.4794426, 1],
+			Vec3 Scale = [8, 8, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57da44a964645c93:TreeyonceHead000",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		MinimapMovement = 
+		{
+			int ThisPlayer = 1,
+			CogPath EndGoal = 
+			{
+				string Path = ":/WinCondition",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 17,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 25,
+		},
+		Named = 
+		{
+			string Name = "FinalBackground",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-10.6492767, 77.3139801, -50],
+			Vec3 Scale = [5.16686153, 14.5317078, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57ee9497605f16fe:FinalBackground",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 26,
+		},
+		Named = 
+		{
+			string Name = "backtrees 2",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-23.2808399, 5.08758163, -15],
+			Vec3 Scale = [16.4473686, 12.3421068, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57e55f8f22f3a402:backtrees 2",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		AnimationGraph = 
+		{
+			bool Active = true,
+			AnimPlayMode PlayMode = PlayOnce,
+			float TimeScale = 1,
+			string AnimationName = "4f8ebbde619389d0:DefaultAnimation",
+			uint64 DebugPreviewId = 0000000000000000,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 27,
+		},
+		Named = 
+		{
+			string Name = "finalbacktrees_0",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-7.17557526, 17.1928444, -40],
+			Vec3 Scale = [4.83625698, 4.37468243, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 0.5],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57ee96b100cd1cd5:finalbacktrees_0",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 28,
+		},
+		Named = 
+		{
+			string Name = "finalbacktrees_0",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-7.17557526, 164.042175, -40],
+			Vec3 Scale = [4.83625698, 4.37468243, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 0.5],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57ee96b100cd1cd5:finalbacktrees_0",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 29,
+		},
+		Named = 
+		{
+			string Name = "finalbacktrees_0",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-7.17556763, 223.768188, -40],
+			Vec3 Scale = [4.83625698, 7.25903225, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 0.5],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57ee96b100cd1cd5:finalbacktrees_0",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 30,
+		},
+		Named = 
+		{
+			string Name = "finalbacktrees_0",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-7.17558575, 68.4257202, -40],
+			Vec3 Scale = [4.83625698, 4.37468243, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 0.5],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57ee96b100cd1cd5:finalbacktrees_0",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 31,
+		},
+		Named = 
+		{
+			string Name = "finalbacktrees_0",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-7.17557573, 90.6175079, -40],
+			Vec3 Scale = [4.83625698, 4.37468243, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 0.5],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57ee96b100cd1cd5:finalbacktrees_0",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 32,
+		},
+		Named = 
+		{
+			string Name = "finalfronttrees_0",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-2.33346558, 19.6138954, -30],
+			Vec3 Scale = [4.86120844, 4.68654966, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 0.699999988],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57ee9724eaa324f4:finalfronttrees_0",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 33,
+		},
+		Named = 
+		{
+			string Name = "Sprite",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-22.6973038, 0.484805584, 0],
+			Vec3 Scale = [2.16959, 1.87774527, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		SpriteParticleSystem = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			SystemChildMode ChildMode = Independent,
+			SystemSpace SystemSpace = CameraSpace,
+			uint DrawOrder = 0,
+			Vec4 Tint = [0.339700013, 0.790000021, 0.357712001, 1],
+			float WarmUpTime = 0,
+			ParticleGeometry GeometryMode = Billboarded,
+			ParticleRenderMode RenderMode = Blended,
+			ParticleSortMode SortMode = Youngest,
+			ParticleAnimation ParticleAnimation = Single,
+			string Texture = "4fab71e8bcb7a8ce:DefaultTexture",
+			float VelocityScale = 1,
+			float LengthScale = 1,
+			float MaxParticleSize = 100,
+			Vec3 SystemSize = [4, 4, 4],
+		},
+		SphericalParticleEmitter = 
+		{
+			bool Active = true,
+			uint EmitCount = 0,
+			float EmitRate = 10,
+			float EmitVariance = 0,
+			float Size = 1,
+			float SizeVariance = 0.5,
+			float Lifetime = 1,
+			float LifetimeVariance = 0.200000003,
+			float Spin = 0,
+			float SpinVariance = 50,
+			bool RandomSpin = true,
+			float Fill = 1,
+			float EmitterVelocityPercent = 0,
+			Vec3 StartVelocity = [0, 0, 0],
+			Vec3 RandomVelocity = [2, 2, 2],
+			Vec3 TangentVelocity = [0, 0, 0],
+			Vec3 EmitterSize = [0, 0, 0],
+			bool FastMovingEmitter = false,
+		},
+		LinearParticleAnimator = 
+		{
+			Vec3 Force = [4, 0, 0],
+			Vec3 RandomForce = [6, 0, 0],
+			float Torque = 0,
+			float Growth = 0,
+			float Dampening = 0,
+			Vec3 Twist = [6, 0, 0],
+		},
+		ParticleColorAnimator = 
+		{
+			Vec4 Color0 = [0.762987494, 0.894999981, 0.671249986, 0],
+			Vec4 Color1 = [0.172799975, 0.539999962, 0.209520027, 1],
+			Vec4 Color2 = [0.174250007, 0.850000024, 0.343187511, 1],
+			Vec4 Color3 = [0.510281563, 0.889999986, 0.17355001, 1],
+			Vec4 Color4 = [0.0288749933, 0.38499999, 0.0538038015, 0],
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57c66a36d9a37f0b:Enemy",
+		LinkId = 
+		{
+			uint Id = 34,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [16.6838722, 46.8767014, 0],
+			Vec3 Scale = [3.32878518, 3.43274951, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Monkey",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57c66a36d9a37f0b:Enemy",
+		LinkId = 
+		{
+			uint Id = 35,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-17.3475494, 77.5049667, 0],
+			Vec3 Scale = [3.32878518, 3.43274951, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Monkey",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57c66a36d9a37f0b:Enemy",
+		LinkId = 
+		{
+			uint Id = 36,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-44.0491257, 126.981407, 0],
+			Vec3 Scale = [3.32878518, 3.43274951, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Monkey",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57c66a36d9a37f0b:Enemy",
+		LinkId = 
+		{
+			uint Id = 37,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [21.657692, 150.803406, 0],
+			Vec3 Scale = [3.32878518, 3.43274951, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Monkey",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57c66a36d9a37f0b:Enemy",
+		LinkId = 
+		{
+			uint Id = 38,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-46.1433563, 188.76152, 0],
+			Vec3 Scale = [3.32878518, 3.43274951, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Monkey",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57c66a36d9a37f0b:Enemy",
+		LinkId = 
+		{
+			uint Id = 39,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [18.7781105, 220.17514, 0],
+			Vec3 Scale = [3.32878518, 3.43274951, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Monkey",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57c66a36d9a37f0b:Enemy",
+		LinkId = 
+		{
+			uint Id = 40,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [64.8514099, 302.374115, 0],
+			Vec3 Scale = [3.32878518, 3.43274951, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Monkey",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57c66a36d9a37f0b:Enemy",
+		LinkId = 
+		{
+			uint Id = 41,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-50.8553963, 244.782471, 0],
+			Vec3 Scale = [3.32878518, 3.43274951, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Monkey",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57c66a36d9a37f0b:Enemy",
+		LinkId = 
+		{
+			uint Id = 42,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-38.8135147, 292.688232, 0],
+			Vec3 Scale = [3.32878518, 3.43274951, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Monkey",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57c66a36d9a37f0b:Enemy",
+		LinkId = 
+		{
+			uint Id = 43,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [63.2807198, 249.494507, 0],
+			Vec3 Scale = [3.32878518, 3.43274951, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "Monkey",
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 44,
+		},
+		Named = 
+		{
+			string Name = "Sprite",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-24.2009583, 30.840044, -3],
+			Vec3 Scale = [2.15399742, 2.13617373, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13b04c5450354:anim",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 45,
+		},
+		Named = 
+		{
+			string Name = "Sprite",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [7.32535076, 55.155838, -3],
+			Vec3 Scale = [1.18713439, 1.12030089, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13b04c5450354:anim",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 46,
+		},
+		Named = 
+		{
+			string Name = "Sprite",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [31.9569283, 99.4716339, -3],
+			Vec3 Scale = [1.18713439, 1.12030089, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13b04c5450354:anim",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 47,
+		},
+		Named = 
+		{
+			string Name = "Sprite",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-12.4641237, 99.9979477, -3],
+			Vec3 Scale = [1.18713439, 1.12030089, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13b04c5450354:anim",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 48,
+		},
+		Named = 
+		{
+			string Name = "Sprite",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [15.1407795, 85.8076019, -3],
+			Vec3 Scale = [1.18713439, 1.12030089, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13b04c5450354:anim",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 49,
+		},
+		Named = 
+		{
+			string Name = "Sprite",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [0.377981186, 29.261097, -3],
+			Vec3 Scale = [1.18713439, 1.12030089, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13b04c5450354:anim",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 50,
+		},
+		Named = 
+		{
+			string Name = "Sprite",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-25.0430622, 75.4189911, -3],
+			Vec3 Scale = [1.28070295, 1.56140387, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13b04c5450354:anim",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 51,
+		},
+		Named = 
+		{
+			string Name = "Sprite",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [12.2200966, 10.4189873, -3],
+			Vec3 Scale = [2.15399742, 2.13617373, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13b04c5450354:anim",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 52,
+		},
+		Named = 
+		{
+			string Name = "Sprite",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-11.7442284, 5.52903748, 0],
+			Vec3 Scale = [1, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13b04c5450354:anim",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		SpawnPlayers = 
+		{
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 53,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [34.6419983, 3.58746767, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 54,
+		},
+		Named = 
+		{
+			string Name = "Sprite",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-7.19776201, 299.381683, -0.100000001],
+			Vec3 Scale = [4.83561611, 7.62007427, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f147f87c13fa69:darktreetops_0",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 55,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-42.0430527, 3, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 56,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-26.148325, 14, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 57,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-40.7798996, 25, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 58,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [21.2200985, 15, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 59,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-2.77990818, 24.5768776, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 60,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [38.1674576, 26, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 61,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-25.727272, 35.103199, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 62,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-7.83253717, 45, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 63,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-48.2535896, 45.8400383, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 64,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-17.8325386, 68, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 65,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [22.7990379, 104.5, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 66,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [30, 118, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 67,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [0, 110.421051, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 68,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-10.6315794, 121.473686, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 69,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-26.7368431, 128, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 70,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-2.84210968, 134.631592, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 71,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [42.1052551, 152, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 72,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-23.8947411, 145.473999, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 73,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-29.0526352, 164.105591, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 74,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-46, 179, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 75,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-19.8947392, 187.89473, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 76,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [3.89473152, 195.473694, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 77,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [62.3157806, 240, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 78,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [35.7894669, 220.631592, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 79,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [60.9473534, 207, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 80,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [24.8420944, 242.684204, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 81,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-32.8421097, 223.947357, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 82,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-26.0000019, 215.368423, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 83,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [11.052619, 252.315796, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 84,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [57.1578903, 273, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 85,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [38.5263062, 282.789459, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 86,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-33.2631683, 272.684204, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 87,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-67.7894821, 246, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 88,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-72.9473801, 277.725098, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 89,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-39.0526428, 283, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 90,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-62.9473801, 289, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 91,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-77.1579132, 279.631561, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 92,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [39.6842041, 262.263153, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 93,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [56.4210472, 229, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 94,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [73.4736786, 217, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 95,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [49.0526199, 250.10527, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 96,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [104.105247, 236.842117, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 97,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [46.3157768, 300.631592, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 98,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-78.8421097, 298.842102, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 99,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-18.0994663, 291.331879, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 100,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [36.3157921, 306.421082, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 101,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-35.7199326, 302.299988, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 102,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [65.7894592, 292.947388, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 103,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [99.1578751, 292.736847, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 104,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [82.6315613, 282.315796, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 105,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [91.6841965, 261.473694, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 106,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [79.3683929, 252.421051, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 107,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [88.6315689, 226.526352, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 108,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-57.0526314, 211.89473, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 109,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-25.4736881, 242.578949, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 110,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-78.9473648, 257, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 111,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [1.21051931, 307.315826, 0],
+			Vec3 Scale = [1.58479476, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 112,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-36.0000038, 254.263153, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 113,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [95.9999847, 270.473724, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 114,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-0.21052742, 262.789459, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 115,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-52.0000076, 265, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 116,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-50.9473724, 235.210526, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 117,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-63.1578979, 226.315765, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 118,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [4.4210434, 232, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 119,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [20.3157864, 210, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 120,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-42.5263214, 198.10527, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 121,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-11.157897, 207.684235, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 122,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-79.2631607, 147.579254, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 123,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-58.0000038, 157.78978, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 124,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-69.1578979, 168.789993, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 125,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [40, 130, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 126,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [22.7990379, 141, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 127,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [23.0095634, 163, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 128,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [53.64114, 168.263153, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 129,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [61.1148224, 179, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 130,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [48.2727165, 190, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 131,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [33.64114, 201, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 132,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [1.74641037, 168.052643, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 133,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [9.32535362, 178, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 134,
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+		Archetyped = 
+		{
+			string Name = "57f13b717ac8f883:NewBranchPlatform",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [39.9569359, 86, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13a08572cdc5f:NewBranchPlatform",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		RigidBody = 
+		{
+			bool Static = true,
+			bool Asleep = false,
+			bool Kinematic = false,
+			bool RotationLocked = false,
+			bool Mode2D = true,
+			bool AllowSleep = true,
+			bool Inherit2DMode = true,
+			Vec3 Velocity = [0, 0, 0],
+			Vec3 AngularVelocity = [0, 0, 0],
+		},
+		BoxCollider = 
+		{
+			bool Ghost = false,
+			bool SendsMessages = true,
+			bool Seamless = true,
+			string MaterialName = "4de020863e872da8:DefaultPhysicsMaterial",
+			string SerializedGroupName = "4e740859314e5515:DefaultGroup",
+			Vec3 Offset = [0, 2.29999995, 0],
+			Vec3 Size = [4.1500001, 0.375, 0.5],
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 135,
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+		Archetyped = 
+		{
+			string Name = "57f13b717ac8f883:NewBranchPlatform",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-36, 79, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13a08572cdc5f:NewBranchPlatform",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		RigidBody = 
+		{
+			bool Static = true,
+			bool Asleep = false,
+			bool Kinematic = false,
+			bool RotationLocked = false,
+			bool Mode2D = true,
+			bool AllowSleep = true,
+			bool Inherit2DMode = true,
+			Vec3 Velocity = [0, 0, 0],
+			Vec3 AngularVelocity = [0, 0, 0],
+		},
+		BoxCollider = 
+		{
+			bool Ghost = false,
+			bool SendsMessages = true,
+			bool Seamless = true,
+			string MaterialName = "4de020863e872da8:DefaultPhysicsMaterial",
+			string SerializedGroupName = "4e740859314e5515:DefaultGroup",
+			Vec3 Offset = [0, 2.29999995, 0],
+			Vec3 Size = [4.1500001, 0.375, 0.5],
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 136,
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+		Archetyped = 
+		{
+			string Name = "57f13b717ac8f883:NewBranchPlatform",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-12.0000038, 90, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13a08572cdc5f:NewBranchPlatform",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		RigidBody = 
+		{
+			bool Static = true,
+			bool Asleep = false,
+			bool Kinematic = false,
+			bool RotationLocked = false,
+			bool Mode2D = true,
+			bool AllowSleep = true,
+			bool Inherit2DMode = true,
+			Vec3 Velocity = [0, 0, 0],
+			Vec3 AngularVelocity = [0, 0, 0],
+		},
+		BoxCollider = 
+		{
+			bool Ghost = false,
+			bool SendsMessages = true,
+			bool Seamless = true,
+			string MaterialName = "4de020863e872da8:DefaultPhysicsMaterial",
+			string SerializedGroupName = "4e740859314e5515:DefaultGroup",
+			Vec3 Offset = [0, 2.29999995, 0],
+			Vec3 Size = [4.1500001, 0.375, 0.5],
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 137,
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+		Archetyped = 
+		{
+			string Name = "57f13b717ac8f883:NewBranchPlatform",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [49.8625336, 97, 0],
+			Vec3 Scale = [1.28006089, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Sprite = 
+		{
+			bool Visible = true,
+			bool VisibilityCulling = true,
+			bool VisibilityEvents = true,
+			bool CastShadows = false,
+			Vec4 Color = [1, 1, 1, 1],
+			BlendMode BlendMode = Alpha,
+			SpriteGeometryMode GeometryMode = ZPlane,
+			string SpriteLayer = "52ad5fa30d7fcd50:DefaultSpriteLayer",
+			string SpriteSource = "57f13a08572cdc5f:NewBranchPlatform",
+			bool RenderMask = false,
+			bool FlipX = false,
+			bool FlipY = false,
+			bool AnimationActive = true,
+			float AnimationSpeed = 1,
+			uint StartFrame = 0,
+		},
+		RigidBody = 
+		{
+			bool Static = true,
+			bool Asleep = false,
+			bool Kinematic = false,
+			bool RotationLocked = false,
+			bool Mode2D = true,
+			bool AllowSleep = true,
+			bool Inherit2DMode = true,
+			Vec3 Velocity = [0, 0, 0],
+			Vec3 AngularVelocity = [0, 0, 0],
+		},
+		BoxCollider = 
+		{
+			bool Ghost = false,
+			bool SendsMessages = true,
+			bool Seamless = true,
+			string MaterialName = "4de020863e872da8:DefaultPhysicsMaterial",
+			string SerializedGroupName = "4e740859314e5515:DefaultGroup",
+			Vec3 Offset = [0, 2.29999995, 0],
+			Vec3 Size = [4.1500001, 0.375, 0.5],
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 138,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-44.2535896, 117, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 139,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-55.0956917, 90, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 140,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-69.4114838, 98.2105331, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 141,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-75.5167465, 108.842102, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 142,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-58.3588486, 132.315796, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 143,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-58.0430603, 141.315994, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 144,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [22.2660561, 75, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 145,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [11.9569378, 56.0505638, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 146,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [36.3779907, 64, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 147,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [36.272728, 47.2084618, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 148,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-34.8851585, 57, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+	ArchetypeInstance = 
+	{
+		string Name = "57f13b717ac8f883:NewBranchPlatform",
+		LinkId = 
+		{
+			uint Id = 149,
+		},
+		Transform = 
+		{
+			Vec3 Translation = [17.5358868, 37, 0],
+			Vec3 Scale = [2.27485371, 1.43040943, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Named = 
+		{
+			string Name = "NewBranchPlatform",
+		},
+	},
+},

@@ -1,0 +1,20 @@
+class CameraMovement : ZilchComponent
+{
+    [Property]
+    var FollowThis : CogPath;
+    
+    function Initialize(init : CogInitializer)
+    {
+        //this.FollowThis = this.Space.FindObjectByName("Player1");
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        //var newcam = this.FollowThis.Transform.LocalTranslation;
+        var thisPlayer = this.FollowThis.Cog;
+        var newcam = thisPlayer.Transform.LocalTranslation;
+        newcam.Z = this.Owner.Transform.LocalTranslation.Z;
+        this.Owner.Transform.LocalTranslation = newcam;
+    }
+}

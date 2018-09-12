@@ -1,0 +1,17 @@
+class SplashScreenCount : ZilchComponent
+{
+    var Timer : Integer = 0;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        ++this.Timer;
+        if(this.Timer == 320)
+        {
+            this.Space.LoadLevel(Level.Find("MenuScreen"));
+        }
+    }
+}

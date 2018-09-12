@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "P1WinScreen",
+		uint64 ResourceId = 57eff1f9f6093eac,
+	},
+},

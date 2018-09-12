@@ -1,0 +1,28 @@
+class ChooseCharacter : ZilchComponent
+{
+    [Property]
+    var PlayerIndex : Integer;
+    
+    var Controller : Gamepad;
+    
+    var Timer : Real;
+    
+    var Limit : Real;
+    
+    function Initialize(init : CogInitializer)
+    {
+        this.Controller = Zero.Gamepads.GetGamePad(this.PlayerIndex);
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        this.Timer = 0;
+        this.Limit = 60;
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var horzMovement = this.Controller.LeftStick.X;
+        if(Math.Abs(horzMovement) > 0.2)
+        {
+            
+        }
+    }
+}

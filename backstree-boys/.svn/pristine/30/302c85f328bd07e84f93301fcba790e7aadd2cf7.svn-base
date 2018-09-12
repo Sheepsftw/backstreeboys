@@ -1,0 +1,16 @@
+class WinAudio : ZilchComponent
+{
+    [Dependency]
+    var Sound : SoundEmitter;
+    
+    var SoundInstance : SoundInstance;
+    function Initialize(init : CogInitializer)
+    {
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        this.SoundInstance = this.Owner.SoundEmitter.PlayCue(SoundCue.Find("WinSound"));
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+}

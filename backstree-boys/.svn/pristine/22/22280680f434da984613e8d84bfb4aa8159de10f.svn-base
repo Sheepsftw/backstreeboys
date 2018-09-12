@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "ResetCharacters",
+		uint64 ResourceId = 57c65f5e259f3c00,
+	},
+},

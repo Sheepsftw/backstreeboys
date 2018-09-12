@@ -1,0 +1,11 @@
+AudioContent = 
+{
+	SoundBuilder = 
+	{
+		string Name = "countdown",
+		uint64 ResourceId = 57ce38581b3f5352,
+		bool Compressed = false,
+		uint Quality = 100,
+		SoundLoadType LoadType = Decompress,
+	},
+},

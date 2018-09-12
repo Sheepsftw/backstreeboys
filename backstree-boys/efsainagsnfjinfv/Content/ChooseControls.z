@@ -1,0 +1,17 @@
+class ChooseControls : ZilchComponent
+{
+    [Dependency]
+    var ThisButton : PlayButton;
+    
+    [Property]
+    var Keyboard : Boolean;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Owner, Events.MouseDown, this.OnMouseDown);
+    }
+
+    function OnMouseDown(event : ViewportMouseEvent)
+    {
+        this.GameSession.GameSettings.IsKeyboardControls = this.Keyboard;
+    }
+}

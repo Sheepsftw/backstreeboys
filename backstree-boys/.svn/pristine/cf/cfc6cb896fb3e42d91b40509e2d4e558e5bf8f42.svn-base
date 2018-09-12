@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "KeyboardCharacterSelectionCamera",
+		uint64 ResourceId = 57d8fed8c7e5713d,
+	},
+},

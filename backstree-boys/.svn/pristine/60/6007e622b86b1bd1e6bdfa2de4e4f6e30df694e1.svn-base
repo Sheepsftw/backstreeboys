@@ -1,0 +1,14 @@
+class Leaves : ZilchComponent
+{
+    var RandGen : Random = Random();
+    
+    function Initialize(init : CogInitializer)
+    {
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        this.RandGen.Range(5, 5);
+    }
+}

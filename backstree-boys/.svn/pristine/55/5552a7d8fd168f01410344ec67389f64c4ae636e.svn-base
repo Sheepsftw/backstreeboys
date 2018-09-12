@@ -1,0 +1,48 @@
+class Projectile : ZilchComponent
+{
+    [Property]
+    var Speed: Real = 2.0;
+    [Property]
+    var Direction: Real3 = Real3();
+    
+    [Property]
+    var Lifetime : Integer = 500;
+    
+    var Timer : Integer = 0;
+    function Initialize(init : CogInitializer)
+    {
+        // We need to update the projectile's movement every logic update
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+    }
+    
+    function OnCollisionStarted(event : CollisionEvent)
+    {
+        if(event.OtherObject.Name == "Player1" || event.OtherObject.Name == "Player2" ||
+                                                  event.OtherObject.Name == "Player3" ||
+                                                  event.OtherObject.Name == "Player4")
+        {
+            if(this.GameSession.GameSettings.IsKeyboardControls)
+            {
+                event.OtherObject.Player1Input.Valid = false;
+            }
+            else
+            {
+                event.OtherObject.PlayerInput.Valid = false;
+            }
+            this.Owner.Destroy();
+        }
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        // Apply movement
+        this.Owner.Transform.Translation += this.Direction * event.Dt * this.Speed;
+        var location = this.Owner.Transform.Translation;
+        ++this.Timer;
+        if(this.Timer == this.Lifetime)
+        {
+            this.Owner.Destroy();
+        }
+    }
+}

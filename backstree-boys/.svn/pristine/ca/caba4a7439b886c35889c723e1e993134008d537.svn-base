@@ -1,0 +1,150 @@
+class SpawnPlayers : ZilchComponent
+{
+    var PlayerNumber : Integer; 
+    function Initialize(init : CogInitializer)
+    {
+        this.PlayerNumber = this.GameSession.GameSettings.CharacterArray.Count;
+        var index = 0;
+        if(this.GameSession.GameSettings.IsKeyboardControls)
+        {
+            for(index = 0; index < this.PlayerNumber; ++index)
+            {
+                var thisMoveSprite : SpriteSource = null;
+                var thisStillSprite : SpriteSource = null;
+                var thisMinimapSprite : SpriteSource = null;
+                var thisStunSprite : SpriteSource = null;
+                var thisJumpSprite : SpriteSource = null;
+                var thisHurtSprite : SpriteSource = null;
+                var characterNumber : Integer = this.GameSession.GameSettings.CharacterArray.Get(index);
+                
+                if(characterNumber == 0)
+                {
+                    thisMoveSprite = SpriteSource.Find("mowglimove");
+                    thisStillSprite = SpriteSource.Find("mowglistill");
+                    thisMinimapSprite = SpriteSource.Find("lilMhead000");
+                    thisStunSprite = SpriteSource.Find("stunm");
+                    thisJumpSprite = SpriteSource.Find("jumplilm");
+                    thisHurtSprite = SpriteSource.Find("hurtm");
+                }
+                else if(characterNumber == 1)
+                {
+                    thisMoveSprite = SpriteSource.Find("queenbmove");
+                    thisStillSprite = SpriteSource.Find("queenbstill");
+                    thisMinimapSprite = SpriteSource.Find("TreeyonceHead000");
+                    thisStunSprite = SpriteSource.Find("stunyonce");
+                    thisJumpSprite = SpriteSource.Find("jumpyonce");
+                    thisHurtSprite = SpriteSource.Find("hurtb");
+                }
+                else
+                {
+                    thisMoveSprite = SpriteSource.Find("sprucemove");
+                    thisStillSprite = SpriteSource.Find("sprucestill");
+                    thisMinimapSprite = SpriteSource.Find("SpruceLeeHead001");
+                    thisStunSprite = SpriteSource.Find("stunspruce");
+                    thisJumpSprite = SpriteSource.Find("jumpspruce");
+                    thisHurtSprite = SpriteSource.Find("hurtspruce");
+                }
+                var location = this.Owner.Transform.Translation;
+                location.X += index*30;
+                var thisPlayer = this.Space.CreateAtPosition(Archetype.Find("Player"), location);
+                
+                thisPlayer.Player1Input.MoveSprite = thisMoveSprite;
+                thisPlayer.Player1Input.StillSprite = thisStillSprite;
+                thisPlayer.Player1Input.StunSprite = thisStunSprite;
+                thisPlayer.Player1Input.JumpSprite = thisJumpSprite;
+                var minimap = this.Space.CreateAtPosition(Archetype.Find("MinimapMovement"), location);
+                minimap.Sprite.SpriteSource = thisMinimapSprite;
+                minimap.MinimapMovement.ThisPlayer = index;
+                if(index == 0)
+                {
+                    thisPlayer.Name = "Player1";
+                }
+                else
+                {
+                    thisPlayer.Player1Input.Up = Keys.Up;
+                    thisPlayer.Player1Input.Left = Keys.Left;
+                    thisPlayer.Player1Input.Right = Keys.Right;
+                    thisPlayer.Player1Input.Punch = Keys.Period;
+                    thisPlayer.Name = "Player2";
+                }
+                var thisTimer = this.Space.CreateAtPosition(Archetype.Find("CountdownTimer"), location);
+                thisTimer.Countdown.PlayerIndex = index;
+                
+                
+            }
+        }
+        else
+        {
+            for(index = 0; index < this.PlayerNumber; ++index)
+            {
+                var thisMoveSprite : SpriteSource = null;
+                var thisStillSprite : SpriteSource = null;
+                var thisMinimapSprite : SpriteSource = null;
+                var thisStunSprite : SpriteSource = null;
+                var thisJumpSprite : SpriteSource = null;
+                var thisHurtSprite : SpriteSource = null;
+                var characterNumber : Integer = this.GameSession.GameSettings.CharacterArray.Get(index);
+                
+                if(characterNumber == 0)
+                {
+                    thisMoveSprite = SpriteSource.Find("mowglimove");
+                    thisStillSprite = SpriteSource.Find("mowglistill");
+                    thisMinimapSprite = SpriteSource.Find("lilMhead000");
+                    thisStunSprite = SpriteSource.Find("stunm");
+                    thisJumpSprite = SpriteSource.Find("jumplilm");
+                    thisHurtSprite = SpriteSource.Find("hurtm");
+                }
+                else if(characterNumber == 1)
+                {
+                    thisMoveSprite = SpriteSource.Find("queenbmove");
+                    thisStillSprite = SpriteSource.Find("queenbstill");
+                    thisMinimapSprite = SpriteSource.Find("TreeyonceHead000");
+                    thisStunSprite = SpriteSource.Find("stunyonce");
+                    thisJumpSprite = SpriteSource.Find("jumpyonce");
+                    thisHurtSprite = SpriteSource.Find("hurtb");
+                }
+                else
+                {
+                    thisMoveSprite = SpriteSource.Find("sprucemove");
+                    thisStillSprite = SpriteSource.Find("sprucestill");
+                    thisMinimapSprite = SpriteSource.Find("SpruceLeeHead001");
+                    thisStunSprite = SpriteSource.Find("stunspruce");
+                    thisJumpSprite = SpriteSource.Find("jumpspruce");
+                    thisHurtSprite = SpriteSource.Find("hurtspruce");
+                }
+                var location = this.Owner.Transform.Translation;
+                location.X += index*10;
+                var thisPlayer = this.Space.CreateAtPosition(Archetype.Find("GamepadPlayer"), location);
+                
+                thisPlayer.PlayerInput.MoveSprite = thisMoveSprite;
+                thisPlayer.PlayerInput.StillSprite = thisStillSprite;
+                thisPlayer.PlayerInput.StunSprite = thisStunSprite;
+                thisPlayer.PlayerInput.JumpSprite = thisJumpSprite;
+                thisPlayer.PlayerInput.PlayerIndex = index;
+                var minimap = this.Space.CreateAtPosition(Archetype.Find("MinimapMovement"), location);
+                minimap.Sprite.SpriteSource = thisMinimapSprite;
+                minimap.MinimapMovement.ThisPlayer = index;
+                if(index == 0)
+                {
+                    thisPlayer.Name = "Player1";
+                }
+                else
+                {
+                   
+                    thisPlayer.Name = "Player2";
+                }
+                var thisTimer = this.Space.CreateAtPosition(Archetype.Find("CountdownTimer"), location);
+                thisTimer.Countdown.PlayerIndex = index;
+                
+                
+            }
+            
+        }
+        
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+}

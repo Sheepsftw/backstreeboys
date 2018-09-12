@@ -1,0 +1,11 @@
+DataContent = 
+{
+	DataBuilder = 
+	{
+		string Name = "Platform",
+		uint64 ResourceId = 57c66b9728daf740,
+		string LoaderType = "SpriteLayer",
+		uint Version = 0,
+		bool ShowInEditor = true,
+	},
+},

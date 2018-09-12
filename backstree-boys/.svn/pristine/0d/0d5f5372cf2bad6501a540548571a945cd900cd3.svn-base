@@ -1,0 +1,72 @@
+class Player2Input : ZilchComponent
+{
+    /*
+    [Property]
+    var PlayerIdle : SpriteSource;
+    
+    [Property]
+    var PlayerRun : SpriteSource;
+    
+    [Property]
+    var PlayerJump : SpriteSource;
+    */
+    function Initialize(init : CogInitializer)
+    {
+        
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(Zero.Keyboard, Events.KeyDown, this.OnKeyDown);
+        //Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+    }
+    /*
+    function OnCollisionStarted(event : CollisionEvent)
+    {
+        if(event.OtherObject.Name == "Platform")
+        {
+            this.Owner.Sprite.SpriteSource = this.PlayerIdle;
+        }
+    }
+    */
+    function OnKeyDown(event : KeyboardEvent)
+    {
+        if(event.Key == Keys.Up)
+        {
+            //this.Owner.Sprite.SpriteSource = this.PlayerJump;
+            this.Owner.SweptController.Jump();
+        }
+    }
+    
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var movement = Real3();
+        if(Zero.Keyboard.KeyIsDown(Keys.Left))
+        {
+            /*
+            if(this.Owner.Sprite.SpriteSource != this.PlayerRun)
+            {
+                this.Owner.Sprite.SpriteSource = this.PlayerRun;
+            }
+            */
+            movement.X -= 1;
+        }
+        else if(Zero.Keyboard.KeyIsDown(Keys.Right))
+        {
+            /*
+            if(this.Owner.Sprite.SpriteSource != this.PlayerRun)
+            {
+                this.Owner.Sprite.SpriteSource = this.PlayerRun;
+            }
+            */
+            movement.X += 1;
+        }
+        /*
+        else
+        {
+            if(this.Owner.Sprite.SpriteSource != this.PlayerJump)
+            {
+                this.Owner.Sprite.SpriteSource = this.PlayerIdle;
+            }
+        }
+        */
+        this.Owner.SweptController.Update(movement, event.Dt);
+    }
+}

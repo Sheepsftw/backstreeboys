@@ -1,0 +1,212 @@
+class Player1Input : ZilchComponent
+{
+    [Property]
+    var Left : Keys = Keys.A;
+    
+    [Property]
+    var Right : Keys = Keys.D;
+    
+    [Property]
+    var Up : Keys = Keys.W;
+    
+    [Property]
+    var Punch : Keys = Keys.V;
+    
+    var MoveSprite : SpriteSource = null;
+    
+    var StillSprite : SpriteSource = null;
+    
+    var StunSprite : SpriteSource = null;
+    
+    var JumpSprite : SpriteSource = null;
+    
+    //true = left, false = right
+    var Direction : Boolean;
+    //after player lets go of one key
+    var CanChange : Boolean;
+    
+    var Counter : Integer = 0;
+    
+    var Valid : Boolean = true;
+    
+    var Collided : Boolean = false;
+    
+    [Dependency]
+    var Sound : SoundEmitter;
+    
+    var SoundInstance : SoundInstance;
+    //initialize :(
+    function Initialize(init : CogInitializer)
+    {
+        this.CanChange = true;
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(Zero.Keyboard, Events.KeyDown, this.OnKeyDown);
+        Zero.Connect(Zero.Keyboard, Events.KeyDown, this.OnPunchPressed);
+        //Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+    }
+    //jump mechanic
+    function OnKeyDown(event : KeyboardEvent)
+    {
+        if(this.Valid)
+        {
+            if(event.Key == this.Up)
+            {
+                this.Owner.Sprite.SpriteSource = this.JumpSprite;
+                this.Owner.SweptController.Jump();
+            }
+        }
+    }
+    
+    function OnPunchPressed(event : KeyboardEvent)
+    {
+        if(this.Valid)
+        {
+            if(event.Key == this.Punch)
+            {
+                var createloc = this.Owner.Transform.Translation;
+                if(this.Owner.Sprite.FlipX)
+                {
+                    createloc.X -= 1.3;
+                }
+                else
+                {
+                    createloc.X += 1.3;
+                }
+                var thisPunch = this.Space.CreateAtPosition(Archetype.Find("Punch"), createloc);
+                thisPunch.PunchScripte.Player = this.Owner;
+                if(this.StillSprite.Name == "mowglistill")
+                {
+                    thisPunch.Sprite.SpriteSource = SpriteSource.Find("armlilm");
+                }
+                else if(this.StillSprite.Name == "queenbstill")
+                {
+                    thisPunch.Sprite.SpriteSource = SpriteSource.Find("armyonce");
+                }
+                else
+                {
+                    thisPunch.Sprite.SpriteSource = SpriteSource.Find("armspruce");
+                }
+                if(this.Owner.Sprite.FlipX)
+                {
+                    thisPunch.Sprite.FlipX = true;
+                }
+            }
+        }
+    }
+    
+    function KnockBack(otherPosition : Real3)
+    {
+        var thisPosition : Real3 = this.Owner.Transform.Translation;
+        var newDirection = Real3();
+        newDirection.X = -(otherPosition.X - thisPosition.X);
+        newDirection = Math.Normalize(newDirection);
+        Console.WriteLine(newDirection.X);
+        this.Owner.SweptController.Update(newDirection, 0.2);
+    }
+    
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var movement = Real3();
+        if(this.Valid && !this.Collided)
+        {
+            this.Direction = this.Owner.Sprite.FlipX;
+            //when A is being pressed
+            if(Zero.Keyboard.KeyIsDown(this.Left))
+            {
+                if(this.Owner.Sprite.SpriteSource != this.MoveSprite && this.Owner.SweptController.Grounded)
+                {
+                    this.Owner.Sprite.SpriteSource = this.MoveSprite;
+                }
+                //if both are being pressed
+                if(Zero.Keyboard.KeyIsDown(this.Right))
+                {
+                      
+                    //turn around
+                    if(!this.Direction && this.CanChange)
+                    {
+                      
+                        movement.X -= 1;
+                        this.Owner.Sprite.FlipX = true;
+                        this.CanChange = false;
+                        this.Direction = true;
+                    }
+                    //continue the movement
+                    else if(this.Direction && !this.CanChange)
+                    {
+                        movement.X -= 1;
+                    }
+                }
+                //if only A is being pressed
+                else
+                {
+                    movement.X -= 1;
+                    this.Owner.Sprite.FlipX = true;
+                    this.Direction = true;
+                    this.CanChange = true;
+                }
+                
+            }
+            // when D is being pressed 
+            if(Zero.Keyboard.KeyIsDown(this.Right))
+            {
+                if(this.Owner.Sprite.SpriteSource != this.MoveSprite && this.Owner.SweptController.Grounded)
+                {
+                    this.Owner.Sprite.SpriteSource = this.MoveSprite;
+                }
+                //if both are being pressed
+               if(Zero.Keyboard.KeyIsDown(this.Left))
+               {
+                   //turn around
+                   if(this.Direction && this.CanChange)
+                   {
+                       movement.X += 1;
+                       this.Owner.Sprite.FlipX = false;
+                       this.CanChange = false;
+                       this.Direction = false;
+                   }
+                   //continue the movement
+                   else if(!this.Direction && !this.CanChange)
+                   {
+                       movement.X += 1;
+                   }
+               }
+               //if only D is being pressed
+               else
+               {
+                    movement.X += 1;
+                    this.CanChange = true;
+                    this.Owner.Sprite.FlipX = false;
+                    this.Direction = false;
+               }
+            }
+            if(this.Owner.SweptController.Grounded && !Zero.Keyboard.KeyIsDown(this.Right) && !Zero.Keyboard.KeyIsDown(this.Left)) 
+            {
+                this.Owner.Sprite.SpriteSource = this.StillSprite;
+            }
+            
+        }
+        else if(!this.Valid)
+        {
+            if(this.Owner.Sprite.SpriteSource != this.StunSprite)
+            {
+                this.Owner.Sprite.SpriteSource = this.StunSprite;
+            }
+            if(this.Counter == 0)
+            {
+                this.SoundInstance = this.Owner.SoundEmitter.PlayCue(SoundCue.Find("Monkey"));
+            }
+            ++this.Counter;
+            if(this.Counter == 100)
+            {
+               this.Counter = 0;
+               this.Valid = true; 
+            }
+        }
+        else
+        {
+            this.Collided = false;
+        }
+        
+        this.Owner.SweptController.Update(movement, event.Dt);
+    }
+}

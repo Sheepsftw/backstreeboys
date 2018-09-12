@@ -1,0 +1,229 @@
+class EnemyController : ZilchComponent
+{
+function ChaseTarget(event: UpdateEvent)
+{    
+}
+function CalculateChaseDirectionAndDistance()
+{
+    // Get direction toward target
+    this.ChaseDirection = this.TargetObject.Transform.Translation - this.Owner.Transform.Translation;
+    this.ChaseDirection2 = this.TargetObject2.Transform.Translation - this.Owner.Transform.Translation;
+    if(this.TargetObject3 != null)
+    {
+        this.ChaseDirection3 = this.TargetObject3.Transform.Translation - this.Owner.Transform.Translation;
+        this.DistanceFromTarget3 = Math.Length(this.ChaseDirection3);
+        this.ChaseDirection3 = Math.Normalize(this.ChaseDirection3);
+    }
+    if(this.TargetObject4 != null)
+    {
+    this.ChaseDirection4 = this.TargetObject4.Transform.Translation - this.Owner.Transform.Translation;
+    this.DistanceFromTarget4 = Math.Length(this.ChaseDirection4);
+    this.ChaseDirection4 = Math.Normalize(this.ChaseDirection4);
+    }
+    // Extract distance by finding magnitude
+    this.DistanceFromTarget = Math.Length(this.ChaseDirection);
+    this.DistanceFromTarget2 = Math.Length(this.ChaseDirection2);
+    
+    
+    // Extract direction by normalizing
+    this.ChaseDirection = Math.Normalize(this.ChaseDirection);
+    this.ChaseDirection2 = Math.Normalize(this.ChaseDirection2);
+    
+    
+}
+    //Pacing properties and variables
+    [Property]
+    var PaceSpeed: Real = 10.0;
+    [Property]
+    var MaxMoveDistance: Real = 10.0;
+    var PaceDirection: Real3 = Real3(1.0, 0.0, 0.0);
+    var StartPosition: Real3 = Real3();
+    
+    // Chasing Properties and variables
+var TargetObject : Cog = null;
+var TargetObject2 : Cog = null;
+var TargetObject3 : Cog = null;
+var TargetObject4 : Cog = null;
+[Property]
+var ChaseTriggerDistance: Real = 7.0;
+var DistanceFromTarget: Real = 0.0;
+var DistanceFromTarget2: Real = 0.0;
+var DistanceFromTarget3: Real = 0.0;
+var DistanceFromTarget4: Real = 0.0;
+var ChaseDirection: Real3 = Real3();
+var ChaseDirection2 : Real3 = Real3();
+var ChaseDirection3 : Real3 = Real3();
+var ChaseDirection4 : Real3 = Real3();
+var TargetIsWithinRange: Boolean = false;
+var TargetIsWithinRange2: Boolean = false;
+var TargetIsWithinRange3: Boolean = false;
+var TargetIsWithinRange4: Boolean = false;
+
+// Shooting Properties
+[Property]
+var ShootDelay: Real = 1.0;
+var NextShot: Real = 1.0;
+
+var Targeted : Integer = 0;
+
+// Dependencies
+[Dependency]
+var Transform: Transform = null;
+[Dependency]
+var Sprite: Sprite = null;
+
+[Dependency]
+var Sound : SoundEmitter;
+
+var SoundInstance : SoundInstance;
+
+    function Initialize(init : CogInitializer)
+    {
+        // We need to update the enemy's behavior every logic update
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        // Have to know where we started to know how far we've moved
+        this.StartPosition = this.Owner.Transform.Translation;
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        this.TargetObject = this.Space.FindObjectByName("Player1");
+        this.TargetObject2 = this.Space.FindObjectByName("Player2");
+        this.TargetObject3 = this.Space.FindObjectByName("Player3");
+        this.TargetObject4 = this.Space.FindObjectByName("Player4");
+    // Reevaluate the situation to determine if our object should pursue
+    this.TargetIsWithinRange = false;
+    this.TargetIsWithinRange2 = false;
+    this.TargetIsWithinRange3 = false;
+    this.TargetIsWithinRange4 = false;
+    // If our target exists
+    if (this.TargetObject != null && this.TargetObject2 != null)
+    {
+        
+        // Calculate the direction and distance of target
+        this.CalculateChaseDirectionAndDistance();
+        // Evaluate whether Ai should chase or pace
+        this.TargetIsWithinRange = (this.DistanceFromTarget <= this.ChaseTriggerDistance);
+        this.TargetIsWithinRange2 = (this.DistanceFromTarget2 <= this.ChaseTriggerDistance);
+
+        if (this.TargetIsWithinRange)
+        {
+            
+            if(this.Targeted == 0 || this.Targeted == 1)
+            {
+                // Chase target
+                this.ChaseTarget(event);
+                // Shoot target
+                this.ShootAtTarget(event, 1);
+                
+                this.Targeted = 1;
+            }
+        }
+        if(this.TargetIsWithinRange2)
+        {
+            if(this.Targeted == 0 || this.Targeted == 2)
+            {
+                // Chase target
+                this.ChaseTarget(event);
+                // Shoot target
+                this.ShootAtTarget(event, 2);
+                this.Targeted = 2;
+            }
+        }
+        if(this.TargetObject3 != null)
+        {
+            this.TargetIsWithinRange3 = (this.DistanceFromTarget3 <= this.ChaseTriggerDistance);
+            if(this.TargetIsWithinRange3)
+            {
+                if(this.Targeted == 0 || this.Targeted == 3)
+                {
+                    this.ChaseTarget(event);
+                    this.ShootAtTarget(event, 3);
+                    this.Targeted = 3;
+                }
+            }
+        }
+        if(this.TargetObject4 != null)
+        {
+            this.TargetIsWithinRange4 = (this.DistanceFromTarget4 <= this.ChaseTriggerDistance);
+            if(this.TargetIsWithinRange4)
+            {
+                if(this.Targeted == 0 || this.Targeted == 4)
+                {
+                    this.ChaseTarget(event);
+                    this.ShootAtTarget(event, 4);
+                    this.Targeted = 4;
+                }
+            }
+        }
+        if(!this.TargetIsWithinRange && !this.TargetIsWithinRange2 && !this.TargetIsWithinRange3 && !this.TargetIsWithinRange4) // If target not in range
+        {
+            this.Targeted = 0;
+            // Pace back and forth
+            this.PaceBackAndForth(event);
+        }
+}
+else // if there is no target, pace
+{
+    // Logic for pacing back and forth
+    this.PaceBackAndForth(event);
+}
+    }
+
+    function PaceBackAndForth(event: UpdateEvent)
+    {
+  // Find out how far we've travelled from our start position
+  var displacement = this.Owner.Transform.Translation - this.StartPosition;
+  var distanceFromStart = Math.Length(displacement);
+
+  // If we have travelled past our max distance
+  if (distanceFromStart >= this.MaxMoveDistance)
+  {
+        // Change direction to go back the way we came
+        this.PaceDirection = -displacement;
+        
+  }
+
+  // Ensure the PaceDirection is only a direction via normlization
+  this.PaceDirection = Math.Normalize(this.PaceDirection);
+  
+  // Apply movement
+  this.Owner.Transform.Translation += this.PaceDirection * event.Dt * this.PaceSpeed;
+}
+    function ShootAtTarget(event: UpdateEvent, index : Integer)
+    {
+        
+    // Don't shoot until the next shot timer is reached
+    if (event.TimePassed > this.NextShot)
+    {
+        // Update next shot timer
+        this.NextShot = event.TimePassed + this.ShootDelay;
+        // Create a projectile originating from the enemy's position
+        var projectileObject = this.Space.CreateAtPosition(Archetype.Find("EnemyProjectile"), this.Owner.Transform.Translation);
+        if (projectileObject != null)
+        {
+            // Shoot in the direction of the target (which is the same as the chase Direction)
+            if(index == 1)
+            {
+                projectileObject.Projectile.Direction = this.ChaseDirection;
+            }
+            else if(index == 2)
+            {
+                projectileObject.Projectile.Direction = this.ChaseDirection2;
+            }
+            else if(index == 3)
+            {
+                projectileObject.Projectile.Direction = this.ChaseDirection3;
+            }
+            else
+            {
+                projectileObject.Projectile.Direction = this.ChaseDirection4;
+            }
+            this.SoundInstance = this.Owner.SoundEmitter.PlayCue(SoundCue.Find("Monkey"));
+            // Make sure projectile moves faster than the enemy
+                projectileObject.Projectile.Speed = 15.0;
+            }
+        }
+    }
+
+}

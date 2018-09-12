@@ -1,0 +1,20 @@
+class CustomCursor : ZilchComponent
+{
+    
+    var Controller : Gamepad;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        this.Controller = Zero.Gamepads.GetGamePad(0);
+        var velocity = Real3();
+        velocity.X += this.Controller.LeftStick.X;
+        velocity.Y += this.Controller.LeftStick.Y;
+        velocity = Math.Normalize(velocity);
+        this.Owner.Transform.Translation += velocity * event.Dt * 10;
+        Console.WriteLine(this.Owner.Transform.Translation.Z);
+    }
+}

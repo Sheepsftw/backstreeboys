@@ -1,0 +1,7 @@
+ContentLibrary = 
+{
+	string Name = "Falling Object",
+	uint64 LibraryId = 57eeae907a32e3bb,
+	string SourceControlType = "",
+	bool ReadOnly = false,
+},

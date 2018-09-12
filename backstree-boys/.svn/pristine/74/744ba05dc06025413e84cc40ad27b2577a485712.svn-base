@@ -1,0 +1,121 @@
+class SpawnPlayers : ZilchComponent
+{
+    var PlayerNumber : Integer; 
+    function Initialize(init : CogInitializer)
+    {
+        this.PlayerNumber = this.GameSession.GameSettings.CharacterArray.Count;
+        var index = 0;
+        if(this.GameSession.GameSettings.IsKeyboardControls)
+        {
+            for(index = 0; index < this.PlayerNumber; ++index)
+            {
+                var thisMoveSprite : SpriteSource = null;
+                var thisStillSprite : SpriteSource = null;
+                var thisMinimapSprite : SpriteSource = null;
+                var characterNumber : Integer = this.GameSession.GameSettings.CharacterArray.Get(index);
+                
+                if(characterNumber == 0)
+                {
+                    thisMoveSprite = SpriteSource.Find("mowglimove");
+                    thisStillSprite = SpriteSource.Find("mowglistill");
+                    thisMinimapSprite = SpriteSource.Find("lilMhead000");
+                }
+                else if(characterNumber == 1)
+                {
+                    thisMoveSprite = SpriteSource.Find("queenbmove");
+                    thisStillSprite = SpriteSource.Find("queenbstill");
+                    thisMinimapSprite = SpriteSource.Find("TreeyonceHead000");
+                }
+                else
+                {
+                    thisMoveSprite = SpriteSource.Find("sprucemove");
+                    thisStillSprite = SpriteSource.Find("sprucestill");
+                    thisMinimapSprite = SpriteSource.Find("SpruceLeeHead001");
+                }
+                var location = this.Owner.Transform.Translation;
+                location.X += index*10;
+                var thisPlayer = this.Space.CreateAtPosition(Archetype.Find("Player"), location);
+                
+                thisPlayer.Player1Input.MoveSprite = thisMoveSprite;
+                thisPlayer.Player1Input.StillSprite = thisStillSprite;
+                var minimap = this.Space.CreateAtPosition(Archetype.Find("MinimapMovement"), location);
+                minimap.Sprite.SpriteSource = thisMinimapSprite;
+                minimap.MinimapMovement.ThisPlayer = index;
+                if(index == 0)
+                {
+                    thisPlayer.Name = "Player1";
+                }
+                else
+                {
+                    thisPlayer.Player1Input.Up = Keys.Up;
+                    thisPlayer.Player1Input.Left = Keys.Left;
+                    thisPlayer.Player1Input.Right = Keys.Right;
+                    thisPlayer.Name = "Player2";
+                }
+                var thisTimer = this.Space.CreateAtPosition(Archetype.Find("CountdownTimer"), location);
+                thisTimer.Countdown.PlayerIndex = index;
+                
+                
+            }
+        }
+        else
+        {
+            for(index = 0; index < this.PlayerNumber; ++index)
+            {
+                var thisMoveSprite : SpriteSource = null;
+                var thisStillSprite : SpriteSource = null;
+                var thisMinimapSprite : SpriteSource = null;
+                var characterNumber : Integer = this.GameSession.GameSettings.CharacterArray.Get(index);
+                
+                if(characterNumber == 0)
+                {
+                    thisMoveSprite = SpriteSource.Find("mowglimove");
+                    thisStillSprite = SpriteSource.Find("mowglistill");
+                    thisMinimapSprite = SpriteSource.Find("lilMhead000");
+                }
+                else if(characterNumber == 1)
+                {
+                    thisMoveSprite = SpriteSource.Find("queenbmove");
+                    thisStillSprite = SpriteSource.Find("queenbstill");
+                    thisMinimapSprite = SpriteSource.Find("TreeyonceHead000");
+                }
+                else
+                {
+                    thisMoveSprite = SpriteSource.Find("sprucemove");
+                    thisStillSprite = SpriteSource.Find("sprucestill");
+                    thisMinimapSprite = SpriteSource.Find("SpruceLeeHead001");
+                }
+                var location = this.Owner.Transform.Translation;
+                location.X += index*10;
+                var thisPlayer = this.Space.CreateAtPosition(Archetype.Find("GamepadPlayer"), location);
+                
+                thisPlayer.PlayerInput.MoveSprite = thisMoveSprite;
+                thisPlayer.PlayerInput.StillSprite = thisStillSprite;
+                thisPlayer.PlayerInput.PlayerIndex = index;
+                var minimap = this.Space.CreateAtPosition(Archetype.Find("MinimapMovement"), location);
+                minimap.Sprite.SpriteSource = thisMinimapSprite;
+                minimap.MinimapMovement.ThisPlayer = index;
+                if(index == 0)
+                {
+                    thisPlayer.Name = "Player1";
+                }
+                else
+                {
+                   
+                    thisPlayer.Name = "Player2";
+                }
+                var thisTimer = this.Space.CreateAtPosition(Archetype.Find("CountdownTimer"), location);
+                thisTimer.Countdown.PlayerIndex = index;
+                
+                
+            }
+            
+        }
+        
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+}

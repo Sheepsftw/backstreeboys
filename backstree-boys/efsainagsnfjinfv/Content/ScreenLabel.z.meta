@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "ScreenLabel",
+		uint64 ResourceId = 57fa7a5037134092,
+	},
+},

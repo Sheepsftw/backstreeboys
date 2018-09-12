@@ -1,0 +1,50 @@
+class Countdown : ZilchComponent
+{
+    [Property]
+    var PlayerIndex : Integer = 0;
+    
+    [Property]
+    var CountdownTimer :Integer = 0;
+    
+    function Initialize(init : CogInitializer)
+    {
+        this.Owner.Sprite.SpriteSource = SpriteSource.Find("1000");
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var camera : Cog = null;
+        if(this.PlayerIndex == 0)
+        {
+            camera = this.Space.FindObjectByName("Player1Camera");
+        }
+        else
+        {
+            camera = this.Space.FindObjectByName("Player2Camera");
+        }
+        var location = camera.Transform.Translation;
+        var newlocation = Real3();
+        newlocation.X = location.X;
+        newlocation.Y = location.Y + 20;
+        newlocation.Z = 1;
+        this.Owner.Transform.Translation = newlocation;
+        if(this.CountdownTimer == 80)
+        {
+            this.Owner.Sprite.SpriteSource = SpriteSource.Find("2000");
+        }
+        if(this.CountdownTimer == 160)
+        {
+            this.Owner.Sprite.SpriteSource = SpriteSource.Find("3000");
+        }
+        if(this.CountdownTimer == 240)
+        {
+            this.Owner.Sprite.SpriteSource = SpriteSource.Find("4000");
+        }
+        if(this.CountdownTimer == 320)
+        {
+            this.Owner.Sprite.Visible = false;
+        }
+        ++this.CountdownTimer;
+    }
+}

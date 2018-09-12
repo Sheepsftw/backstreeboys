@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "Projectile",
+		uint64 ResourceId = 57efe8104fcc8904,
+	},
+},

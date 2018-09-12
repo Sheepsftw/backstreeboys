@@ -1,0 +1,45 @@
+class CountdownAudio : ZilchComponent
+{
+    [Property]
+    var SoundCue: SoundCue;
+    
+    var CountdownFinished : Boolean = false;
+    
+    var CountdownTimer : Integer = 0;
+    
+    [Dependency]
+    var Sound : SoundEmitter;
+    
+    var SoundInstance : SoundInstance;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if(!this.CountdownFinished)
+        {
+            if(this.CountdownTimer == 0)
+            {
+                this.SoundInstance = this.Owner.SoundEmitter.PlayCue(this.SoundCue);
+            }
+            if(this.CountdownTimer % 80 == 60)
+            {
+                this.Owner.SoundEmitter.Pause();
+            }
+            if(this.CountdownTimer % 80 == 0)
+            {
+                this.Owner.SoundEmitter.Continue();
+            }
+            if(this.CountdownTimer == 320)
+            {
+                this.Owner.SoundEmitter.Stop();
+                this.CountdownFinished = true;
+                this.SoundInstance = this.Owner.SoundEmitter.PlayCue(SoundCue.Find("BackgroundMusic"));
+            }
+            ++this.CountdownTimer;
+        }
+    }
+}

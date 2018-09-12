@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "anim",
+		uint64 ResourceId = 57f13b04c5450354,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 216,
+		uint FrameSizeY = 504,
+		uint FrameCount = 14,
+		float FrameDelay = 0.0765005946,
+		float OriginX = 108,
+		float OriginY = 252,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

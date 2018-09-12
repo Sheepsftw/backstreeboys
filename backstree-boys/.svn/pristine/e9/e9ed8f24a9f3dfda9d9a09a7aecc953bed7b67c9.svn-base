@@ -1,0 +1,51 @@
+class PlayerInput : ZilchComponent
+{
+    //which gamepad it's gonna detect
+    [Property]
+    var PlayerIndex : Integer;
+    //declare the controller
+    var Controller : Gamepad;
+    
+    function Initialize(init : CogInitializer)
+    {
+        this.Controller = Zero.Gamepads.GetGamePad(this.PlayerIndex);
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.Controller, Events.ButtonDown, this.OnJumpPressed);
+    }
+    //jump mechanic
+    function OnJumpPressed(event : GamepadEvent)
+    {
+        if(event.Button == Buttons.A)
+        {
+            this.Owner.SweptController.Jump();
+        }
+    }
+    
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var movement = Real3();
+        //which direction
+        var horzmovement = this.Controller.LeftStick.X;
+        movement.X += horzmovement;
+        //flipping the sprite to face the direction
+        if(horzmovement > 0)
+        {
+            this.Owner.Sprite.FlipX = false;
+            //changing the Collider to be realistic
+            var newBoxCollider = Real3();
+            newBoxCollider.X = -0.3;
+            newBoxCollider.Y = 0.1;
+            this.Owner.BoxCollider.Offset = newBoxCollider;
+        }
+        else if(horzmovement < 0)
+        {
+            this.Owner.Sprite.FlipX = true;
+            //see above
+            var newBoxCollider = Real3();
+            newBoxCollider.X = 0.3;
+            newBoxCollider.Y = 0.1;
+            this.Owner.BoxCollider.Offset = newBoxCollider;
+        }
+        this.Owner.SweptController.Update(movement, event.Dt);
+    }
+}

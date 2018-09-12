@@ -1,0 +1,236 @@
+class SpawnPlayers : ZilchComponent
+{
+    var PlayerNumber : Integer; 
+    function Initialize(init : CogInitializer)
+    {
+        this.PlayerNumber = this.GameSession.GameSettings.CharacterArray.Count;
+        var index = 0;
+        if(this.GameSession.GameSettings.IsKeyboardControls)
+        {
+            for(index = 0; index < this.PlayerNumber; ++index)
+            {
+                var thisMoveSprite : SpriteSource = null;
+                var thisStillSprite : SpriteSource = null;
+                var thisMinimapSprite : SpriteSource = null;
+                var thisStunSprite : SpriteSource = null;
+                var thisJumpSprite : SpriteSource = null;
+                var thisHurtSprite : SpriteSource = null;
+                var characterNumber : Integer = this.GameSession.GameSettings.CharacterArray.Get(index);
+                
+                if(characterNumber == 0)
+                {
+                    thisMoveSprite = SpriteSource.Find("mowglimove");
+                    thisStillSprite = SpriteSource.Find("mowglistill");
+                    thisMinimapSprite = SpriteSource.Find("lilMhead000");
+                    thisStunSprite = SpriteSource.Find("stunm");
+                    thisJumpSprite = SpriteSource.Find("jumplilm");
+                    thisHurtSprite = SpriteSource.Find("hurtm");
+                }
+                else if(characterNumber == 1)
+                {
+                    thisMoveSprite = SpriteSource.Find("queenbmove");
+                    thisStillSprite = SpriteSource.Find("queenbstill");
+                    thisMinimapSprite = SpriteSource.Find("TreeyonceHead000");
+                    thisStunSprite = SpriteSource.Find("stunyonce");
+                    thisJumpSprite = SpriteSource.Find("jumpyonce");
+                    thisHurtSprite = SpriteSource.Find("hurtb");
+                }
+                else
+                {
+                    thisMoveSprite = SpriteSource.Find("sprucemove");
+                    thisStillSprite = SpriteSource.Find("sprucestill");
+                    thisMinimapSprite = SpriteSource.Find("SpruceLeeHead001");
+                    thisStunSprite = SpriteSource.Find("stunspruce");
+                    thisJumpSprite = SpriteSource.Find("jumpspruce");
+                    thisHurtSprite = SpriteSource.Find("hurtspruce");
+                }
+                var location = this.Owner.Transform.Translation;
+                location.X += index*30;
+                var thisPlayer = this.Space.CreateAtPosition(Archetype.Find("Player"), location);
+                
+                thisPlayer.Player1Input.MoveSprite = thisMoveSprite;
+                thisPlayer.Player1Input.StillSprite = thisStillSprite;
+                thisPlayer.Player1Input.StunSprite = thisStunSprite;
+                thisPlayer.Player1Input.JumpSprite = thisJumpSprite;
+                var minimap = this.Space.CreateAtPosition(Archetype.Find("MinimapMovement"), location);
+                minimap.Sprite.SpriteSource = thisMinimapSprite;
+                minimap.MinimapMovement.ThisPlayer = index;
+                if(index == 0)
+                {
+                    thisPlayer.Name = "Player1";
+                    minimap.SpriteText.Text = "P1";
+                }
+                else
+                {
+                    thisPlayer.Player1Input.Up = Keys.Up;
+                    thisPlayer.Player1Input.Left = Keys.Left;
+                    thisPlayer.Player1Input.Right = Keys.Right;
+                    thisPlayer.Player1Input.Punch = Keys.Period;
+                    thisPlayer.Name = "Player2";
+                    minimap.SpriteText.Text = "P2";
+                }
+                var thisTimer = this.Space.CreateAtPosition(Archetype.Find("CountdownTimer"), location);
+                thisTimer.Countdown.PlayerIndex = index;
+                
+                var thisCamera = this.Space.CreateAtPosition(Archetype.Find("PlayerCamera"), location);
+                thisCamera.CameraMovement.FollowThis = index;
+                if(index == 1)
+                {
+                    thisCamera.Name = "Player2Camera";
+                    var offsetcam = Real2();
+                    offsetcam.X = 0.525;
+                    thisCamera.CameraViewport.NormalizedOffset = offsetcam;
+                }
+            }
+        }
+        else
+        {
+            for(index = 0; index < this.PlayerNumber; ++index)
+            {
+                var thisMoveSprite : SpriteSource = null;
+                var thisStillSprite : SpriteSource = null;
+                var thisMinimapSprite : SpriteSource = null;
+                var thisStunSprite : SpriteSource = null;
+                var thisJumpSprite : SpriteSource = null;
+                var thisHurtSprite : SpriteSource = null;
+                var characterNumber : Integer = this.GameSession.GameSettings.CharacterArray.Get(index);
+                
+                if(characterNumber == 0)
+                {
+                    thisMoveSprite = SpriteSource.Find("mowglimove");
+                    thisStillSprite = SpriteSource.Find("mowglistill");
+                    thisMinimapSprite = SpriteSource.Find("lilMhead000");
+                    thisStunSprite = SpriteSource.Find("stunm");
+                    thisJumpSprite = SpriteSource.Find("jumplilm");
+                    thisHurtSprite = SpriteSource.Find("hurtm");
+                }
+                else if(characterNumber == 1)
+                {
+                    thisMoveSprite = SpriteSource.Find("queenbmove");
+                    thisStillSprite = SpriteSource.Find("queenbstill");
+                    thisMinimapSprite = SpriteSource.Find("TreeyonceHead000");
+                    thisStunSprite = SpriteSource.Find("stunyonce");
+                    thisJumpSprite = SpriteSource.Find("jumpyonce");
+                    thisHurtSprite = SpriteSource.Find("hurtb");
+                }
+                else
+                {
+                    thisMoveSprite = SpriteSource.Find("sprucemove");
+                    thisStillSprite = SpriteSource.Find("sprucestill");
+                    thisMinimapSprite = SpriteSource.Find("SpruceLeeHead001");
+                    thisStunSprite = SpriteSource.Find("stunspruce");
+                    thisJumpSprite = SpriteSource.Find("jumpspruce");
+                    thisHurtSprite = SpriteSource.Find("hurtspruce");
+                }
+                var location = this.Owner.Transform.Translation;
+                location.X += index*10;
+                var thisPlayer = this.Space.CreateAtPosition(Archetype.Find("GamepadPlayer"), location);
+                
+                thisPlayer.PlayerInput.MoveSprite = thisMoveSprite;
+                thisPlayer.PlayerInput.StillSprite = thisStillSprite;
+                thisPlayer.PlayerInput.StunSprite = thisStunSprite;
+                thisPlayer.PlayerInput.JumpSprite = thisJumpSprite;
+                thisPlayer.PlayerInput.PlayerIndex = index;
+                var minimap = this.Space.CreateAtPosition(Archetype.Find("MinimapMovement"), location);
+                minimap.Sprite.SpriteSource = thisMinimapSprite;
+                minimap.MinimapMovement.ThisPlayer = index;
+                if(index == 0)
+                {
+                    thisPlayer.Name = "Player1";
+                    minimap.SpriteText.Text = "P1";
+                }
+                else if(index == 1)
+                {
+                    minimap.SpriteText.Text = "P2";
+                    thisPlayer.Name = "Player2";
+                }
+                else if(index == 2)
+                {
+                    minimap.SpriteText.Text = "P3";
+                    thisPlayer.Name = "Player3";
+                }
+                else
+                {
+                    minimap.SpriteText.Text = "P4";
+                    thisPlayer.Name = "Player4";
+                }
+                var thisTimer = this.Space.CreateAtPosition(Archetype.Find("CountdownTimer"), location);
+                thisTimer.Countdown.PlayerIndex = index;
+                
+                var thisCamera = this.Space.CreateAtPosition(Archetype.Find("PlayerCamera"), location);
+                thisCamera.CameraMovement.FollowThis = index;
+                if(this.PlayerNumber == 2)
+                {
+                    if(index == 1)
+                    {
+                        thisCamera.Name = "Player2Camera";
+                        var offsetcam = Real2();
+                        offsetcam.X = 0.525;
+                        thisCamera.CameraViewport.NormalizedOffset = offsetcam;
+                    }
+                }
+                else if(this.PlayerNumber == 3)
+                {
+                    if(index != 0)
+                    {
+                        var camsize = Real2();
+                        camsize.X = 0.475;
+                        camsize.Y = 0.5;
+                        thisCamera.CameraViewport.NormalizedSize = camsize;
+                    }
+                    if(index == 1)
+                    {
+                        thisCamera.Name = "Player2Camera";
+                        var offsetcam = Real2();
+                        offsetcam.X = 0.525;
+                        thisCamera.CameraViewport.NormalizedOffset = offsetcam;
+                    }
+                    else if(index == 2)
+                    {
+                        thisCamera.Name = "Player3Camera";
+                        var offsetcam = Real2();
+                        offsetcam.X = 0.525;
+                        offsetcam.Y = 0.5;
+                        thisCamera.CameraViewport.NormalizedOffset = offsetcam;
+                    }
+                }
+                else
+                {
+                    var camsize = Real2();
+                    camsize.X = 0.475;
+                    camsize.Y = 0.5;
+                    thisCamera.CameraViewport.NormalizedSize = camsize;
+                    if(index == 1)
+                    {
+                        thisCamera.Name = "Player2Camera";
+                        var offsetcam = Real2();
+                        offsetcam.X = 0.525;
+                        thisCamera.CameraViewport.NormalizedOffset = offsetcam;
+                    }
+                    else if(index == 2)
+                    {
+                        thisCamera.Name = "Player3Camera";
+                        var offsetcam = Real2();
+                        offsetcam.Y = 0.5;
+                        thisCamera.CameraViewport.NormalizedOffset = offsetcam;
+                    }
+                    else if(index == 3)
+                    {
+                        thisCamera.Name = "Player4Camera";
+                        var offsetcam = Real2();
+                        offsetcam.X = 0.525;
+                        offsetcam.Y = 0.5;
+                        thisCamera.CameraViewport.NormalizedOffset = offsetcam;
+                    }
+                }
+                Console.WriteLine(thisCamera.Name);
+            }
+            
+        }
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+}

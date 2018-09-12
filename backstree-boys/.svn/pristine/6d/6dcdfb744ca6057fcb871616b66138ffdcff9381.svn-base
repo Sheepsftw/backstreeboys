@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "WinAudio",
+		uint64 ResourceId = 57ce94df7afd6d48,
+	},
+},

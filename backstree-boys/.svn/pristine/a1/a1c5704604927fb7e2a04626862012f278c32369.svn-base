@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "lilmlegs",
+		uint64 ResourceId = 57eeb881429364b6,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 144,
+		uint FrameSizeY = 144,
+		uint FrameCount = 3,
+		float FrameDelay = 0.118824422,
+		float OriginX = 72,
+		float OriginY = 72,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

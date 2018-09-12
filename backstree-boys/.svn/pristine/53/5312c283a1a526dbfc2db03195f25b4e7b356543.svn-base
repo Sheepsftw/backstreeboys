@@ -1,0 +1,108 @@
+class Player2Input : ZilchComponent
+{
+    //true = left, false = right
+    var Direction : Boolean;
+    //after player lets go of one key
+    var CanChange : Boolean;
+    //initialize :(
+    function Initialize(init : CogInitializer)
+    {
+        this.CanChange = true;
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(Zero.Keyboard, Events.KeyDown, this.OnKeyDown);
+    }
+    //jump mechanic
+    function OnKeyDown(event : KeyboardEvent)
+    {
+        if(event.Key == Keys.Up)
+        {
+            this.Owner.SweptController.Jump();
+        }
+    }
+    
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var movement = Real3();
+        this.Direction = this.Owner.Sprite.FlipX;
+        //when Left is being pressed
+        if(Zero.Keyboard.KeyIsDown(Keys.Left))
+        {
+            //if both are being pressed
+            if(Zero.Keyboard.KeyIsDown(Keys.Right))
+            {
+                //turn around
+                if(!this.Direction && this.CanChange)
+                {
+                    movement.X -= 1;
+                    this.Owner.Sprite.FlipX = true;
+                    this.CanChange = false;
+                    this.Direction = true;
+                    //change the BoxCollider
+                    var newOffset = Real3();
+                    newOffset.X = 0.3;
+                    newOffset.Y = 0.1;
+                    this.Owner.BoxCollider.Offset = newOffset;
+                }
+                //continue the movement
+                else if(this.Direction && !this.CanChange)
+                {
+                    movement.X -= 1;
+                }
+            }
+            //if only Left is being pressed
+            else
+            {
+                movement.X -= 1;
+                this.Owner.Sprite.FlipX = true;
+                this.Direction = true;
+                this.CanChange = true;
+                //change the BoxCollider
+                var newOffset = Real3();
+                newOffset.X = 0.3;
+                newOffset.Y = 0.1;
+                this.Owner.BoxCollider.Offset = newOffset;
+            }
+            
+        }
+        //when Right is being pressed
+        if(Zero.Keyboard.KeyIsDown(Keys.Right))
+        {
+            //if both are being pressed
+           if(Zero.Keyboard.KeyIsDown(Keys.Left))
+           {
+               //turn around
+               if(this.Direction && this.CanChange)
+               {
+                   movement.X += 1;
+                   this.Owner.Sprite.FlipX = false;
+                   this.CanChange = false;
+                   this.Direction = false;
+                   //change the BoxCollider
+                   var newOffset = Real3();
+                    newOffset.X = -0.3;
+                    newOffset.Y = 0.1;
+                    this.Owner.BoxCollider.Offset = newOffset;
+               }
+               //continue the movement
+               else if(!this.Direction && !this.CanChange)
+               {
+                   movement.X += 1;
+               }
+           }
+           //if only Right is being pressed
+           else
+           {
+                movement.X += 1;
+                this.CanChange = true;
+                this.Owner.Sprite.FlipX = false;
+                this.Direction = false;
+                //change the BoxCollider
+                var newOffset = Real3();
+                newOffset.X = -0.3;
+                newOffset.Y = 0.1;
+                this.Owner.BoxCollider.Offset = newOffset;
+           }
+        }
+        this.Owner.SweptController.Update(movement, event.Dt);
+    }
+}

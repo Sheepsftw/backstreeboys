@@ -1,0 +1,18 @@
+class ChooseNumberOfPlayers : ZilchComponent
+{
+    [Dependency]
+    var ThisButton : PlayButton;
+    
+    [Property]
+    var NumberOfPlayers : Integer;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Owner, Events.MouseDown, this.OnMouseDown);
+    }
+
+    function OnMouseDown(event : ViewportMouseEvent)
+    {
+        this.GameSession.GameSettings.NumberOfCharacters = this.NumberOfPlayers;
+    }
+}

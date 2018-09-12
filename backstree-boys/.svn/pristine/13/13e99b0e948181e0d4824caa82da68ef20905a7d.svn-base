@@ -1,0 +1,12 @@
+BinaryContent = 
+{
+	BinaryBuilder = 
+	{
+		string Name = "TreeFall_TileMap03",
+		uint64 ResourceId = 57e7f6e4dacf7f28,
+		string LoaderType = "TileMapSource",
+		uint Version = 0,
+		string FilterTag = "",
+		string ResourceOwner = "554cea0f94af672f:TreeFall",
+	},
+},
